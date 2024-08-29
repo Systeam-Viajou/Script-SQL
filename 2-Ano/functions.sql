@@ -43,3 +43,30 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION log_excursao_func()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO log_excursao (excursao_id, operacao, data_operacao)
+    VALUES (NEW.ID, TG_OP, NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION log_classificacao_func()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO log_classificacao (classificacao_id, operacao, data_operacao)
+    VALUES (NEW.ID, TG_OP, NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION log_ponto_turistico_func()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO log_ponto_turistico (ponto_turistico_id, operacao, data_operacao)
+    VALUES (NEW.ID, TG_OP, NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
