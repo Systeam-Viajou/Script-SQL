@@ -9,26 +9,22 @@ CREATE TABLE plano (
 
 CREATE TABLE usuario (
     ID SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    logradouro VARCHAR(255),
-    cidade VARCHAR(50),
-    estado VARCHAR(2),
-    bairro VARCHAR(50),
-    complemento VARCHAR(50),
-    data_nascimento DATE,
-    cpf CHAR(11) UNIQUE NOT NULL,
+    data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
+    cpf VARCHAR(11) UNIQUE NOT NULL,
     nickname VARCHAR(30) UNIQUE NOT NULL,
     imagem VARCHAR(255),
     telefone VARCHAR(11) NOT NULL,
-    genero CHAR(1),
+    genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
     senha VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
     ID_usuario INT NOT NULL,
-    data_paga TIMESTAMP WITH TIME ZONE,
+    data_pagamento TIMESTAMP WITH TIME ZONE,
 	data_termino TIMESTAMP WITH TIME ZONE,
     PRIMARY KEY (ID_plano, ID_usuario),
     FOREIGN KEY (ID_plano) REFERENCES plano(ID),
@@ -70,7 +66,6 @@ CREATE TABLE usuario_figurinhas (
 CREATE TABLE eventos (
     ID SERIAL PRIMARY KEY,
     faixa_etaria VARCHAR(50),
-    horario TIME,
     data_inicio TIMESTAMP WITH TIME ZONE,
     data_termino TIMESTAMP WITH TIME ZONE,
     preco_pessoa DECIMAL(10, 2),
