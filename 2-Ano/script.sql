@@ -76,6 +76,7 @@ CREATE TABLE eventos (
 CREATE TABLE excursao (
     ID SERIAL PRIMARY KEY,
     capacidade varchar(10),
+    qntd_pessoas VARCHAR(10)
     empresa VARCHAR(255),
 	site_empresa VARCHAR(255),
     preco_total DECIMAL(10, 2),
