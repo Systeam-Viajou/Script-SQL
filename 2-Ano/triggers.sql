@@ -1,16 +1,21 @@
-CREATE OR REPLACE FUNCTION atualizar_media_classificacao()
-RETURNS TRIGGER AS $$
-DECLARE
-    nova_media DECIMAL(3,2);
-BEGIN
-    SELECT AVG(nota) INTO nova_media
-    FROM classificacao
-    WHERE ID_atracao = NEW.ID_atracao;
+--?
+CREATE TRIGGER trg_log_plano
+AFTER INSERT OR UPDATE OR DELETE
+ON plano
+FOR EACH ROW
+EXECUTE FUNCTION log_plano_func();
 
-    UPDATE atracao
-    SET media_classificacao = nova_media
-    WHERE ID = NEW.ID_atracao;
 
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
+CREATE TRIGGER trg_log_tour_virtual
+AFTER INSERT OR UPDATE OR DELETE
+ON tour_virtual
+FOR EACH ROW
+EXECUTE FUNCTION log_tour_virtual_func();
+
+
+CREATE TRIGGER trg_log_eventos
+AFTER INSERT OR UPDATE OR DELETE
+ON eventos
+FOR EACH ROW
+EXECUTE FUNCTION log_eventos_func();
+

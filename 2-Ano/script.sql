@@ -7,19 +7,19 @@ CREATE TABLE plano (
 	duracao VARCHAR(10)
 );
 
-CREATE TABLE usuario (
-    ID SERIAL PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL,
-    sobrenome VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
-    cpf VARCHAR(11) UNIQUE NOT NULL,
-    nickname VARCHAR(30) UNIQUE NOT NULL,
-    imagem VARCHAR(255),
-    telefone VARCHAR(11) NOT NULL,
-    genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
-    senha VARCHAR(255) NOT NULL
-);
+-- CREATE TABLE usuario (
+--     ID SERIAL PRIMARY KEY,
+--     nome VARCHAR(50) NOT NULL,
+--     sobrenome VARCHAR(100) NOT NULL,
+--     email VARCHAR(255) UNIQUE NOT NULL,
+--     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
+--     cpf VARCHAR(11) UNIQUE NOT NULL,
+--     nickname VARCHAR(30) UNIQUE NOT NULL,
+--     imagem VARCHAR(255),
+--     telefone VARCHAR(11) NOT NULL,
+--     genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
+--     senha VARCHAR(255) NOT NULL
+-- );
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
@@ -115,3 +115,30 @@ CREATE TABLE pesquisa_perfil (
 	FOREIGN KEY (ID_pergunta) REFERENCES perguntas(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
 );
+
+
+--?tabelas de log
+
+CREATE TABLE log_plano (
+    log_id SERIAL PRIMARY KEY,
+    plano_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE log_tour_virtual (
+    log_id SERIAL PRIMARY KEY,
+    tour_virtual_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+);
+
+CREATE TABLE log_eventos (
+    log_id SERIAL PRIMARY KEY,
+    evento_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+);
+
+
+
