@@ -1,69 +1,59 @@
-CREATE PROCEDURE cadastrar_usuario (
-    _nome VARCHAR(255),
-    _email VARCHAR(255),
-    _endereco VARCHAR(255),
-    _cpf CHAR(11),
-    _nickname VARCHAR(30),
-    _imagem VARCHAR(255),
-    _genero CHAR(1),
-    _senha VARCHAR(255)
-)
-BEGIN
-    INSERT INTO usuario (nome, email, endereco, cpf, nickname, imagem, genero, senha)
-    VALUES (_nome, _email, _endereco, _cpf, _nickname, _imagem, _genero, _senha);
-END;
+-- CREATE OR REPLACE PROCEDURE cadastrar_usuario(v_nome VARCHAR, v_email VARCHAR, v_endereco VARCHAR, v_cpf CHAR, v_nickname VARCHAR, v_imagem VARCHAR, v_genero CHAR, v_senha VARCHAR)
+-- LANGUAGE plpgsql
+-- AS $$
+-- BEGIN
+--     IF EXISTS (SELECT 1 FROM usuario WHERE email = v_email OR cpf = v_cpf OR nickname = v_nickname) THEN
+--         RAISE EXCEPTION 'Usuário com dados únicos já existe.';
+--     ELSE
+--         INSERT INTO usuario (nome, email, endereco, cpf, nickname, imagem, genero, senha)
+--         VALUES (v_nome, v_email, v_endereco, v_cpf, v_nickname, v_imagem, v_genero, v_senha);
+--     END IF;
+-- END;
+-- $$;
 
-CREATE PROCEDURE atualizar_plano_usuario (
-    _ID_plano INT,
-    _ID_usuario INT,
-    _data_paga DATE
-)
-BEGIN
-    INSERT INTO plano_usuario (ID_plano, ID_usuario, data_paga)
-    VALUES (_ID_plano, _ID_usuario, _data_paga)
-    ON DUPLICATE KEY UPDATE data_paga = _data_paga;
-END;
 
-CREATE PROCEDURE adicionar_classificacao (
-    _nota INT,
-    _ID_usuario INT,
-    _ID_atracao INT
-)
+CREATE OR REPLACE PROCEDURE cadastrar_evento(v_faixa_etaria VARCHAR, v_horario TIME, v_data_inicio DATE, v_data_termino DATE, v_preco_pessoa DECIMAL, v_id_atracao INT)
+LANGUAGE plpgsql
+AS $$
 BEGIN
-    IF _nota BETWEEN 1 AND 5 THEN
-        INSERT INTO classificacao (nota, ID_usuario, ID_atracao)
-        VALUES (_nota, _ID_usuario, _ID_atracao);
+    IF EXISTS (SELECT 1 FROM eventos WHERE ID_atracao = v_id_atracao AND NOT (data_termino < v_data_inicio OR data_inicio > v_data_termino)) THEN
+        RAISE EXCEPTION 'Atração já reservada para as datas escolhidas.';
     ELSE
-        raise exception 'Nota fora do intervalo permitido';
+        INSERT INTO eventos (faixa_etaria, horario, data_inicio, data_termino, preco_pessoa, ID_atracao)
+        VALUES (v_faixa_etaria, v_horario, v_data_inicio, v_data_termino, v_preco_pessoa, v_id_atracao);
     END IF;
 END;
+$$;
 
-CREATE PROCEDURE comprar_tour_virtual (
-    _ID_usuario INT,
-    _ID_tourvirtual INT,
-    _data_pagamento DATE
-)
+CREATE OR REPLACE PROCEDURE avaliar_atracao(v_nota INT, v_id_usuario INT, v_id_atracao INT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    IF v_nota < 1 OR v_nota > 5 THEN
+        RAISE EXCEPTION 'Nota inválida. Deve ser entre 1 e 5.';
+    ELSE
+        INSERT INTO classificacao (nota, ID_usuario, ID_atracao)
+        VALUES (v_nota, v_id_usuario, v_id_atracao);
+    END IF;
+END;
+$$;
+
+
+CREATE OR REPLACE PROCEDURE registrar_pagamento_tourvirtual(v_id_usuario INT, v_id_tourvirtual INT, v_data_pagamento DATE)
+LANGUAGE plpgsql
+AS $$
 BEGIN
     INSERT INTO pagamento_tourvirtual (ID_usuario, ID_tourvirtual, data_pagamento)
-    VALUES (_ID_usuario, _ID_tourvirtual, _data_pagamento);
+    VALUES (v_id_usuario, v_id_tourvirtual, v_data_pagamento);
 END;
+$$;
 
-CREATE PROCEDURE cadastrar_atracao (
-    _nome VARCHAR(100),
-    _descricao TEXT,
-    _endereco VARCHAR(255),
-    _acessibilidade BOOLEAN
-)
+CREATE OR REPLACE PROCEDURE remover_usuario(v_id INT)
+LANGUAGE plpgsql
+AS $$
 BEGIN
-    INSERT INTO atracao (nome, descricao, endereco, acessibilidade)
-    VALUES (_nome, _descricao, _endereco, _acessibilidade);
+    DELETE FROM usuario WHERE ID = v_id;
 END;
+$$;
 
-CREATE PROCEDURE adicionar_telefone (
-    _telefone VARCHAR(20),
-    _ID_usuario INT
-)
-BEGIN
-    INSERT INTO telefone (telefone, ID_usuario)
-    VALUES (_telefone, _ID_usuario);
-END;
+
