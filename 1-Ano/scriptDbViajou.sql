@@ -18,7 +18,7 @@ CREATE TABLE usuario (
  cpf VARCHAR(11) UNIQUE NOT NULL,  
  imagem VARCHAR(250),  
  nickname VARCHAR(20),  
- genero CHAR CHECK (genero in ('H', 'M', 'O'),  
+ genero CHAR CHECK (genero in ('F', 'M', 'O'),  
  senha VARCHAR(20) NOT NULL,  
  uf VARCHAR(2) NOT NULL,  
  bairro VARCHAR(30) NOT NULL,  
