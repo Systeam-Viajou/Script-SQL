@@ -1,9 +1,9 @@
-CREATE TABLE Perguntas (  
+CREATE TABLE perguntas (  
  ID SERIAL PRIMARY KEY,  
  nome VARCHAR(100) NOT NULL
 ); 
 
-CREATE TABLE Pesquisa_perfil ( 
+CREATE TABLE pesquisa_perfil ( 
  ID SERIAL PRIMARY KEY,  
  respostas VARCHAR(150) NOT NULL,  
  ID_perguntas INT NOT NULL REFERENCES perguntas(ID),  
@@ -11,7 +11,7 @@ CREATE TABLE Pesquisa_perfil (
  hora TIME NOT NULL
 );
 
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
  email VARCHAR(50) NOT NULL,  
@@ -28,21 +28,21 @@ CREATE TABLE Usuario (
  ID_pesquisa_perfil INT NOT NULL REFERENCES pesquisa_perfil(ID)
 ); 
 
-CREATE TABLE Telefone (
+CREATE TABLE telefone (
  ID SERIAL PRIMARY KEY,
  telefone VARCHAR(20) NOT NULL,  
  ID_usuario INT NOT NULL REFERENCES Usuario(ID) 
 ); 
 
-CREATE TABLE Plano ( 
+CREATE TABLE plano ( 
  ID SERIAL PRIMARY KEY, 
  nome VARCHAR(100) NOT NULL,  
  descricao VARCHAR(100) NOT NULL,  
- livre_propaganda CHAR NOT NULL,  
+ livre_propaganda BOOLEAN DEFAULT FALSE,  
  preco MONEY CONSTRAINT preco_negativo CHECK (preco > 0) 
 ); 
 
-CREATE TABLE Usuario_Plano ( 
+CREATE TABLE usuario_plano ( 
  ID SERIAL PRIMARY KEY,  
  data_pagamento DATE NOT NULL,  
  valor MONEY NOT NULL CONSTRAINT valor_negativo CHECK (valor > 0),  
@@ -51,73 +51,74 @@ CREATE TABLE Usuario_Plano (
  ID_plano INT NOT NULL REFERENCES plano(ID)  
 ); 
 
-CREATE TABLE Local (
+CREATE TABLE atracao (
  ID SERIAL PRIMARY KEY,  
  descricao VARCHAR(100) NOT NULL,  
  nome VARCHAR(30) NOT NULL,  
  endereco VARCHAR(50) NOT NULL,  
- acessibilidade VARCHAR(20) NOT NULL
+ acessibilidade BOOLEAN DEFAULT FALSE
+ -- media_classificacao FLOAT NOT NULL
 ); 
 
-CREATE TABLE Classificacao ( 
+CREATE TABLE classificacao ( 
  ID SERIAL PRIMARY KEY,  
- nota FLOAT NOT NULL CONSTRAINT nota_negativa CHECK(nota > 0),  
- ID_local INT NOT NULL REFERENCES local(ID),  
+ nota FLOAT NOT NULL CONSTRAINT nota_negativa CHECK(nota BETWEEN 1 AND 5),  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  ID_usuario INT NOT NULL REFERENCES usuario(ID)  
 ); 
 
-CREATE TABLE Imagem ( 
+CREATE TABLE imagem ( 
  ID SERIAL PRIMARY KEY,  
  url VARCHAR(200) NOT NULL,  
- ID_local INT NOT NULL REFERENCES local(ID)  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID)  
 ); 
 
-CREATE TABLE Excursao ( 
+CREATE TABLE excursao ( 
  ID SERIAL PRIMARY KEY,  
- capacidade INT NOT NULL,  
+ capacidade INT NOT NULL CHECK (capacidade > 0),  
  duracao VARCHAR(10) NOT NULL,  
  site VARCHAR(200) NOT NULL,  
  preco_total MONEY NOT NULL,  
  data_inicio DATE NOT NULL CHECK(data_inicio < data_termino),  
  data_termino DATE NOT NULL,  
- ID_local INT NOT NULL REFERENCES local(ID)  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID)  
 ); 
 
-CREATE TABLE Figurinhas ( 
+CREATE TABLE figurinhas ( 
  ID SERIAL PRIMARY KEY,  
  url VARCHAR(200) NOT NULL  
 ); 
 
-CREATE TABLE Figu_usuario ( 
+CREATE TABLE figu_usuario ( 
  ID SERIAL PRIMARY KEY,  
  ID_usuario INT NOT NULL REFERENCES usuario(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID)  
 );
 
-CREATE TABLE Tour_virtual (
+CREATE TABLE tour_virtual (
  ID SERIAL PRIMARY KEY,  
  descricao VARCHAR(100) NOT NULL,  
  midia VARCHAR(200) NOT NULL,  
  media_classificacao FLOAT NOT NULL,  
- ID_local INT NOT NULL REFERENCES local(ID),  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID),  
  quant_classificacao INT NOT NULL  
 ); 
 
-CREATE TABLE Conteudo_tour ( 
+CREATE TABLE conteudo_tour ( 
  ID SERIAL PRIMARY KEY,  
  ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID),  
  video VARCHAR(200) NOT NULL  
 ); 
 
-CREATE TABLE Eventos ( 
+CREATE TABLE eventos ( 
  ID SERIAL PRIMARY KEY, 
  faixa_etaria VARCHAR(20) NOT NULL,  
  capacidade INT NOT NULL CHECK (capacidade > 0),  
  horario TIME NOT NULL,  
  data_termino DATE NOT NULL CHECK (data_termino > data_inicio),  
  preco_pessoa FLOAT NOT NULL CONSTRAINT preco_negativo CHECK (preco_pessoa > 0),   
- ID_local INT NOT NULL REFERENCES local(ID),  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  data_inicio DATE NOT NULL,  
  descricao VARCHAR(100) NOT NULL,  
  ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID)  
