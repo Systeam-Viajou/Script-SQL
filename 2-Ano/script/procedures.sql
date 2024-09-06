@@ -1,17 +1,3 @@
--- CREATE OR REPLACE PROCEDURE cadastrar_usuario(v_nome VARCHAR, v_email VARCHAR, v_endereco VARCHAR, v_cpf CHAR, v_nickname VARCHAR, v_imagem VARCHAR, v_genero CHAR, v_senha VARCHAR)
--- LANGUAGE plpgsql
--- AS $$
--- BEGIN
---     IF EXISTS (SELECT 1 FROM usuario WHERE email = v_email OR cpf = v_cpf OR nickname = v_nickname) THEN
---         RAISE EXCEPTION 'Usuário com dados únicos já existe.';
---     ELSE
---         INSERT INTO usuario (nome, email, endereco, cpf, nickname, imagem, genero, senha)
---         VALUES (v_nome, v_email, v_endereco, v_cpf, v_nickname, v_imagem, v_genero, v_senha);
---     END IF;
--- END;
--- $$;
-
-
 CREATE OR REPLACE PROCEDURE cadastrar_evento(v_faixa_etaria VARCHAR, v_horario TIME, v_data_inicio DATE, v_data_termino DATE, v_preco_pessoa DECIMAL, v_id_atracao INT)
 LANGUAGE plpgsql
 AS $$
@@ -55,5 +41,3 @@ BEGIN
     DELETE FROM usuario WHERE ID = v_id;
 END;
 $$;
-
-
