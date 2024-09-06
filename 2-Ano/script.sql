@@ -124,3 +124,61 @@ CREATE TABLE pesquisa_perfil (
 	FOREIGN KEY (ID_pergunta) REFERENCES perguntas(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
 );
+
+
+--?tabelas de log
+
+CREATE TABLE log_plano (
+    log_id SERIAL PRIMARY KEY,
+    plano_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+	--delete_old int
+);
+
+CREATE TABLE log_tour_virtual (
+    log_id SERIAL PRIMARY KEY,
+    tour_virtual_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+    --delete_old int
+
+);
+
+CREATE TABLE log_eventos (
+    log_id SERIAL PRIMARY KEY,
+    evento_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+    --	delete_old int
+);
+
+CREATE TABLE log_excursao (
+    log_id SERIAL PRIMARY KEY,
+    excursao_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+        --delete_old int
+);
+
+CREATE TABLE log_classificacao (
+    log_id SERIAL PRIMARY KEY,
+    classificacao_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+        --delete_old int
+);
+
+CREATE TABLE log_ponto_turistico (
+    log_id SERIAL PRIMARY KEY,
+    ponto_turistico_id INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+        --delete_old int
+);
+
+
+
+
+
+
