@@ -20,6 +20,17 @@ CREATE TABLE usuario (
     genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
     senha VARCHAR(255) NOT NULL
 );
+CREATE TABLE role (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) UNIQUE NOT NULL
+)
+CREATE TABLE role_usuario (
+    ID_role INT NOT NULL,
+    ID_usuario INT NOT NULL,
+    PRIMARY KEY (ID_role, ID_usuario),
+    FOREIGN KEY (ID_role) REFERENCES role(ID),
+    FOREIGN KEY (ID_role) REFERENCES role(ID),
+)
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
@@ -65,9 +76,7 @@ CREATE TABLE usuario_figurinhas (
 
 CREATE TABLE eventos (
     ID SERIAL PRIMARY KEY,
-    faixa_etaria VARCHAR(50),
     data_inicio TIMESTAMP WITH TIME ZONE,
-    data_termino TIMESTAMP WITH TIME ZONE,
     preco_pessoa DECIMAL(10, 2),
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
