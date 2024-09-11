@@ -15,7 +15,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---?
 CREATE OR REPLACE FUNCTION log_plano_func()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -24,7 +23,6 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 
 CREATE OR REPLACE FUNCTION log_tour_virtual_func()
 RETURNS TRIGGER AS $$

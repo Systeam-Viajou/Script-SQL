@@ -7,28 +7,33 @@ CREATE TABLE plano (
 	duracao VARCHAR(10)
 );
 
--- CREATE TABLE usuario (
---     ID SERIAL PRIMARY KEY,
---     nome VARCHAR(50) NOT NULL,
---     sobrenome VARCHAR(100) NOT NULL,
---     email VARCHAR(255) UNIQUE NOT NULL,
---     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
---     cpf VARCHAR(11) UNIQUE NOT NULL,
---     nickname VARCHAR(30) UNIQUE NOT NULL,
---     imagem VARCHAR(255),
---     telefone VARCHAR(11) NOT NULL,
---     genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
---     senha VARCHAR(255) NOT NULL
--- );
+CREATE TABLE usuario (
+    uid VARCHAR(255) PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+    -- email VARCHAR(255) UNIQUE NOT NULL,
+    data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
+    nickname VARCHAR(30) UNIQUE NOT NULL,
+    imagem VARCHAR(255),
+    -- telefone VARCHAR(11) NOT NULL,
+    genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
+    -- senha VARCHAR(255) NOT NULL
+    ID_role INT NOT NULL,
+    FOREIGN KEY (ID_role) REFERENCES role(ID),
+);
+CREATE TABLE role (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) UNIQUE NOT NULL
+)
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
-    ID_usuario INT NOT NULL,
+    ID_usuario VARCHAR(255) NOT NULL,
     data_pagamento TIMESTAMP WITH TIME ZONE,
 	data_termino TIMESTAMP WITH TIME ZONE,
     PRIMARY KEY (ID_plano, ID_usuario),
     FOREIGN KEY (ID_plano) REFERENCES plano(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
 CREATE TABLE atracao (
@@ -49,25 +54,23 @@ CREATE TABLE tour_virtual (
 
 CREATE TABLE pagamento_tourvirtual (
     ID SERIAL PRIMARY KEY,
-    ID_usuario INT NOT NULL,
+    ID_usuario VARCHAR(255) NOT NULL,
     ID_tourvirtual INT NOT NULL,
     data_pagamento DATE,
     FOREIGN KEY (ID_tourvirtual) REFERENCES tour_virtual(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
 CREATE TABLE usuario_figurinhas (
-    ID_usuario INT NOT NULL,
+    ID_usuario VARCHAR(255) NOT NULL,
     ID_figurinha INT NOT NULL, 
     PRIMARY KEY (ID_usuario, ID_figurinha),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
 CREATE TABLE eventos (
     ID SERIAL PRIMARY KEY,
-    faixa_etaria VARCHAR(50),
     data_inicio TIMESTAMP WITH TIME ZONE,
-    data_termino TIMESTAMP WITH TIME ZONE,
     preco_pessoa DECIMAL(10, 2),
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
@@ -76,7 +79,7 @@ CREATE TABLE eventos (
 CREATE TABLE excursao (
     ID SERIAL PRIMARY KEY,
     capacidade varchar(10),
-    qntd_pessoas VARCHAR(10)
+    qntd_pessoas VARCHAR(10),
     empresa VARCHAR(255),
 	site_empresa VARCHAR(255),
     preco_total DECIMAL(10, 2),
@@ -96,10 +99,10 @@ CREATE TABLE ponto_turistico (
 CREATE TABLE classificacao (
     ID SERIAL PRIMARY KEY,
     nota INT CHECK (nota BETWEEN 1 AND 5),
-    ID_usuario INT NOT NULL,
+    ID_usuario VARCHAR(255) NOT NULL,
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
 CREATE TABLE perguntas (
@@ -110,14 +113,14 @@ CREATE TABLE perguntas (
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
     resposta TEXT NOT NULL,
-    ID_usuario INT NOT NULL,
+    ID_usuario VARCHAR(255) NOT NULL,
 	ID_pergunta INT NOT NULL,
 	FOREIGN KEY (ID_pergunta) REFERENCES perguntas(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(ID)
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
 
---?tabelas de log
+--tabelas de log
 
 CREATE TABLE log_plano (
     log_id SERIAL PRIMARY KEY,
@@ -132,8 +135,6 @@ CREATE TABLE log_tour_virtual (
     tour_virtual_id INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-    --delete_old int
-
 );
 
 CREATE TABLE log_eventos (
@@ -141,7 +142,6 @@ CREATE TABLE log_eventos (
     evento_id INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-    --	delete_old int
 );
 
 CREATE TABLE log_excursao (
@@ -149,7 +149,6 @@ CREATE TABLE log_excursao (
     excursao_id INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-        --delete_old int
 );
 
 CREATE TABLE log_classificacao (
@@ -157,7 +156,6 @@ CREATE TABLE log_classificacao (
     classificacao_id INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-        --delete_old int
 );
 
 CREATE TABLE log_ponto_turistico (
@@ -165,11 +163,4 @@ CREATE TABLE log_ponto_turistico (
     ponto_turistico_id INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-        --delete_old int
 );
-
-
-
-
-
-
