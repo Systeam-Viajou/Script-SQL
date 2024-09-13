@@ -16,10 +16,11 @@ CREATE TABLE usuario (
  nome VARCHAR(100) NOT NULL,  
  email VARCHAR(100) NOT NULL,  
  cpf VARCHAR(11) UNIQUE NOT NULL CHECK (cpf~'^[0-9]{11}$'),  
+ data_nascimento DATE NOT NULL,
  imagem VARCHAR(250),  
  nickname VARCHAR(20),  
  genero CHAR CHECK (genero in ('H', 'M', 'O')),  
- senha VARCHAR(20) NOT NULL,  
+ senha VARCHAR(100) NOT NULL,  
  uf VARCHAR(2) NOT NULL,  
  bairro VARCHAR(30) NOT NULL,  
  CEP VARCHAR(9) NOT NULL,  
@@ -89,7 +90,7 @@ CREATE TABLE excursao (
  preco_total MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_total > 0),  
  data_inicio DATE NOT NULL CHECK(data_inicio <= data_termino),  
  data_termino DATE NOT NULL,  
- categoria VARCHAR(50) NO NULL,
+ categoria VARCHAR(50) NOT NULL,
  ID_atracao INT NOT NULL REFERENCES atracao(ID)  
 ); 
 
@@ -124,7 +125,7 @@ CREATE TABLE pagamento_tour (
 
 CREATE TABLE eventos ( 
  ID SERIAL PRIMARY KEY, 
- faixa_etaria VARCHAR(50) NOT NULL,  
+ faixa_etaria VARCHAR(50) NOT NULL CHECK (faixa_etaria IN ('Livre', '10+', '12+', '14+', '16+', '18+')),  
  descricao VARCHAR(200) NOT NULL,
  categoria VARCHAR(50) NOT NULL,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),  
@@ -140,8 +141,8 @@ CREATE TABLE admin (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
  email VARCHAR(100) NOT NULL,
- senha VARCHAR(20) NOT NULL,
- url_imagem VARCHAR(200) NOT NULL
+ senha VARCHAR(100) NOT NULL,
+ url_imagem VARCHAR(200) 
 );
 
 
