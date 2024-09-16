@@ -105,19 +105,19 @@ CREATE TABLE classificacao (
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE perguntas (
+CREATE TABLE perguntas_perfil (
     ID SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL
+    pergunta VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
-    resposta TEXT NOT NULL,
-    ID_usuario VARCHAR(255) NOT NULL,
-	ID_pergunta INT NOT NULL,
-	FOREIGN KEY (ID_pergunta) REFERENCES perguntas(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
+    UID_usuario VARCHAR(255) NOT NULL REFERENCES usuario(uid),
+    ID_perguntas_perfil INT NOT NULL REFERENCES perguntas_perfil(ID),
+    resposta BOOLEAN NOT NULL,
+    data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 --tabelas de log
