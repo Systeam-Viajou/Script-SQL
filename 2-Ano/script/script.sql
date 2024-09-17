@@ -99,7 +99,7 @@ CREATE TABLE ponto_turistico (
 
 CREATE TABLE classificacao (
     ID SERIAL PRIMARY KEY,
-    nota INT CHECK (nota BETWEEN 1 AND 5),
+    nota FLOAT CHECK (nota BETWEEN 1 AND 5),
     ID_usuario VARCHAR(255) NOT NULL,
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
