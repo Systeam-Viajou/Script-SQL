@@ -7,6 +7,11 @@ CREATE TABLE plano (
 	duracao VARCHAR(10)
 );
 
+CREATE TABLE role (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) UNIQUE NOT NULL
+);
+
 CREATE TABLE usuario (
     uid VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
@@ -19,12 +24,8 @@ CREATE TABLE usuario (
     genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
     -- senha VARCHAR(255) NOT NULL
     ID_role INT NOT NULL,
-    FOREIGN KEY (ID_role) REFERENCES role(ID),
+    FOREIGN KEY (ID_role) REFERENCES role(ID)
 );
-CREATE TABLE role (
-    ID SERIAL PRIMARY KEY,
-    nome VARCHAR(50) UNIQUE NOT NULL
-)
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
