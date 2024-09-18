@@ -3,14 +3,6 @@ CREATE TABLE perguntas (
  nome VARCHAR(100) NOT NULL
 ); 
 
-CREATE TABLE pesquisa_perfil ( 
- ID SERIAL PRIMARY KEY,  
- respostas VARCHAR(200) NOT NULL,  
- ID_perguntas INT NOT NULL REFERENCES perguntas(ID),  
- data DATE NOT NULL,  
- hora TIME NOT NULL
-);
-
 CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
@@ -26,8 +18,16 @@ CREATE TABLE usuario (
  CEP VARCHAR(9) NOT NULL,  
  cidade VARCHAR(50) NOT NULL,  
  logradouro VARCHAR(100) NOT NULL,   
- ID_pesquisa_perfil INT NOT NULL REFERENCES pesquisa_perfil(ID)
 ); 
+
+CREATE TABLE pesquisa_perfil ( 
+ ID SERIAL PRIMARY KEY,  
+ respostas VARCHAR(200) NOT NULL,  
+ ID_perguntas INT NOT NULL REFERENCES perguntas(ID),  
+ data DATE NOT NULL,  
+ hora TIME NOT NULL,
+ ID_usuario INT NOT NULL REFERENCES usuario(ID)
+);
 
 CREATE TABLE telefone (
  ID SERIAL PRIMARY KEY,
