@@ -7,6 +7,11 @@ CREATE TABLE plano (
 	duracao VARCHAR(10)
 );
 
+CREATE TABLE role (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) UNIQUE NOT NULL
+);
+
 CREATE TABLE usuario (
     uid VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
@@ -19,12 +24,8 @@ CREATE TABLE usuario (
     genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
     -- senha VARCHAR(255) NOT NULL
     ID_role INT NOT NULL,
-    FOREIGN KEY (ID_role) REFERENCES role(ID),
+    FOREIGN KEY (ID_role) REFERENCES role(ID)
 );
-CREATE TABLE role (
-    ID SERIAL PRIMARY KEY,
-    nome VARCHAR(50) UNIQUE NOT NULL
-)
 
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
@@ -98,26 +99,26 @@ CREATE TABLE ponto_turistico (
 
 CREATE TABLE classificacao (
     ID SERIAL PRIMARY KEY,
-    nota INT CHECK (nota BETWEEN 1 AND 5),
+    nota FLOAT CHECK (nota BETWEEN 1 AND 5),
     ID_usuario VARCHAR(255) NOT NULL,
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE perguntas (
+CREATE TABLE perguntas_perfil (
     ID SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL
+    pergunta VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
-    resposta TEXT NOT NULL,
-    ID_usuario VARCHAR(255) NOT NULL,
-	ID_pergunta INT NOT NULL,
-	FOREIGN KEY (ID_pergunta) REFERENCES perguntas(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
+    UID_usuario VARCHAR(255) NOT NULL REFERENCES usuario(uid),
+    ID_perguntas_perfil INT NOT NULL REFERENCES perguntas_perfil(ID),
+    resposta BOOLEAN NOT NULL,
+    data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 
 --tabelas de log
