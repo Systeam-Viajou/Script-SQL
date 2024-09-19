@@ -21,9 +21,9 @@ CREATE TABLE usuario (
     nickname VARCHAR(30) UNIQUE NOT NULL,
     imagem VARCHAR(255),
     -- telefone VARCHAR(11) NOT NULL,
-    genero CHAR(1) CHECK (genero IN ('F', 'M', 'N')),
+    genero CHAR(1),
     -- senha VARCHAR(255) NOT NULL
-    ID_role INT NOT NULL,
+    ID_role INT,
     FOREIGN KEY (ID_role) REFERENCES role(ID)
 );
 
