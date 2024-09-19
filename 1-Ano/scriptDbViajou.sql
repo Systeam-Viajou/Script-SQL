@@ -3,14 +3,6 @@ CREATE TABLE perguntas (
  nome VARCHAR(100) NOT NULL
 ); 
 
-CREATE TABLE pesquisa_perfil ( 
- ID SERIAL PRIMARY KEY,  
- respostas VARCHAR(200) NOT NULL,  
- ID_perguntas INT NOT NULL REFERENCES perguntas(ID),  
- data DATE NOT NULL,  
- hora TIME NOT NULL
-);
-
 CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
@@ -19,15 +11,23 @@ CREATE TABLE usuario (
  data_nascimento DATE NOT NULL,
  imagem VARCHAR(250),  
  nickname VARCHAR(20),  
- genero CHAR CHECK (genero in ('H', 'M', 'O')),  
+ genero CHAR CHECK (genero in ('M', 'F', 'O')),  
  senha VARCHAR(100) NOT NULL,  
  uf VARCHAR(2) NOT NULL,  
  bairro VARCHAR(30) NOT NULL,  
  CEP VARCHAR(9) NOT NULL,  
  cidade VARCHAR(50) NOT NULL,  
  logradouro VARCHAR(100) NOT NULL,   
- ID_pesquisa_perfil INT NOT NULL REFERENCES pesquisa_perfil(ID)
 ); 
+
+CREATE TABLE pesquisa_perfil ( 
+ ID SERIAL PRIMARY KEY,  
+ respostas VARCHAR(200) NOT NULL,  
+ ID_perguntas INT NOT NULL REFERENCES perguntas(ID),  
+ data DATE NOT NULL,  
+ hora TIME NOT NULL,
+ ID_usuario INT NOT NULL REFERENCES usuario(ID)
+);
 
 CREATE TABLE telefone (
  ID SERIAL PRIMARY KEY,
@@ -40,13 +40,13 @@ CREATE TABLE plano (
  nome VARCHAR(100) NOT NULL,  
  descricao VARCHAR(100) NOT NULL,  
  livre_propaganda BOOLEAN DEFAULT FALSE,  
- preco MONEY CONSTRAINT preco_negativo CHECK (preco >= 0) 
+ preco MONEY CONSTRAINT preco_negativo CHECK (preco >= '0.0') 
 ); 
 
 CREATE TABLE usuario_plano ( 
  ID SERIAL PRIMARY KEY,  
  data_pagamento DATE NOT NULL,  
- preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > 0),  
+ preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > '0.0'),  
  duracao VARCHAR(20) NOT NULL, 
  ID_usuario INT NOT NULL REFERENCES usuario(ID),  
  ID_plano INT NOT NULL REFERENCES plano(ID)  
@@ -76,7 +76,7 @@ CREATE TABLE imagem (
 CREATE TABLE pontos_turisticos (
  ID SERIAL PRIMARY KEY,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),
- preco_entrada MONEY NOT NULL CONSTRAINT preco_entrada_negativo CHECK (preco_entrada >= 0),
+ preco_entrada MONEY NOT NULL CONSTRAINT preco_entrada_negativo CHECK (preco_entrada >= '0.0'),
  categoria VARCHAR(50) NOT NULL,
  ID_atracao INT NOT NULL REFERENCES atracao(ID)
 );
@@ -87,7 +87,7 @@ CREATE TABLE excursao (
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),  
  duracao VARCHAR(20) NOT NULL,  
  site VARCHAR(200) NOT NULL,  
- preco_total MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_total > 0),  
+ preco_total MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_total > '0.0'),  
  data_inicio DATE NOT NULL CHECK(data_inicio <= data_termino),  
  data_termino DATE NOT NULL,  
  categoria VARCHAR(50) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE tour_virtual (
  video VARCHAR(200) NOT NULL, 
  media_classificacao FLOAT NOT NULL DEFAULT 0,  
  qnt_classificacao INT NOT NULL DEFAULT 0,
- preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > 0),
+ preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID),
 ); 
@@ -132,7 +132,7 @@ CREATE TABLE eventos (
  horario TIME NOT NULL,  
  data_inicio DATE NOT NULL,   
  data_termino DATE NOT NULL CHECK (data_termino >= data_inicio),  
- preco_pessoa MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_pessoa >= 0),
+ preco_pessoa MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_pessoa >= '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),   
  ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID)  
 ); 
