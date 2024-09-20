@@ -40,7 +40,10 @@ CREATE TABLE plano (
  nome VARCHAR(100) NOT NULL,  
  descricao VARCHAR(100) NOT NULL,  
  livre_propaganda BOOLEAN DEFAULT FALSE,  
- preco MONEY CONSTRAINT preco_negativo CHECK (preco >= '0.0') 
+ preco MONEY CONSTRAINT preco_negativo CHECK (preco >= '0.0'),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
+ 
 ); 
 
 CREATE TABLE usuario_plano ( 
@@ -57,7 +60,7 @@ CREATE TABLE atracao (
  descricao VARCHAR(200) NOT NULL,  
  nome VARCHAR(50) NOT NULL,  
  endereco VARCHAR(100) NOT NULL,  
- acessibilidade BOOLEAN DEFAULT FALSE
+ acessibilidade BOOLEAN DEFAULT FALSE,
 ); 
 
 CREATE TABLE classificacao ( 
@@ -78,7 +81,9 @@ CREATE TABLE pontos_turisticos (
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),
  preco_entrada MONEY NOT NULL CONSTRAINT preco_entrada_negativo CHECK (preco_entrada >= '0.0'),
  categoria VARCHAR(50) NOT NULL,
- ID_atracao INT NOT NULL REFERENCES atracao(ID)
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
 );
 
 CREATE TABLE excursao ( 
@@ -91,7 +96,9 @@ CREATE TABLE excursao (
  data_inicio DATE NOT NULL CHECK(data_inicio <= data_termino),  
  data_termino DATE NOT NULL,  
  categoria VARCHAR(50) NOT NULL,
- ID_atracao INT NOT NULL REFERENCES atracao(ID)  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
 ); 
 
 CREATE TABLE figurinhas ( 
@@ -114,6 +121,8 @@ CREATE TABLE tour_virtual (
  preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
 ); 
 
 CREATE TABLE pagamento_tour (
@@ -134,7 +143,9 @@ CREATE TABLE eventos (
  data_termino DATE NOT NULL CHECK (data_termino >= data_inicio),  
  preco_pessoa MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_pessoa >= '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),   
- ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID)  
+ ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
 ); 
 
 CREATE TABLE admin (
@@ -142,7 +153,9 @@ CREATE TABLE admin (
  nome VARCHAR(100) NOT NULL,
  email VARCHAR(100) NOT NULL,
  senha VARCHAR(100) NOT NULL,
- url_imagem VARCHAR(200) 
+ url_imagem VARCHAR(200),
+ data_criacao DATE NOT NULL,
+ data_atualizacao DATE NOT NULL
 );
 
 
