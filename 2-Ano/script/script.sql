@@ -135,42 +135,50 @@ CREATE TABLE pesquisa_perfil (
 
 CREATE TABLE log_plano (
     log_id SERIAL PRIMARY KEY,
-    plano_id INT,
+    id_plano INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_tour_virtual (
     log_id SERIAL PRIMARY KEY,
-    tour_virtual_id INT,
+    id_tour_virtual INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_eventos (
     log_id SERIAL PRIMARY KEY,
-    evento_id INT,
+    id_evento INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_excursao (
     log_id SERIAL PRIMARY KEY,
-    excursao_id INT,
+    id_excursao INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_classificacao (
     log_id SERIAL PRIMARY KEY,
-    classificacao_id INT,
+    id_classificacao INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+);
+
+
+CREATE TABLE log_atracao (
+    log_id SERIAL PRIMARY KEY,
+    id_atracao INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_ponto_turistico (
     log_id SERIAL PRIMARY KEY,
-    ponto_turistico_id INT,
+    id_pónto_turistico INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
