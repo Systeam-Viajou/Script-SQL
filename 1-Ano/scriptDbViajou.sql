@@ -41,7 +41,7 @@ CREATE TABLE plano (
  descricao VARCHAR(100) NOT NULL,  
  livre_propaganda BOOLEAN DEFAULT FALSE,  
  preco MONEY CONSTRAINT preco_negativo CHECK (preco >= '0.0'),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
  
 ); 
@@ -61,6 +61,7 @@ CREATE TABLE atracao (
  nome VARCHAR(50) NOT NULL,  
  endereco VARCHAR(100) NOT NULL,  
  acessibilidade BOOLEAN DEFAULT FALSE,
+ categoria VARCHAR(50) NOT NULL
 ); 
 
 CREATE TABLE classificacao ( 
@@ -80,9 +81,8 @@ CREATE TABLE pontos_turisticos (
  ID SERIAL PRIMARY KEY,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),
  preco_entrada MONEY NOT NULL CONSTRAINT preco_entrada_negativo CHECK (preco_entrada >= '0.0'),
- categoria VARCHAR(50) NOT NULL,
  ID_atracao INT NOT NULL REFERENCES atracao(ID),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 );
 
@@ -95,9 +95,8 @@ CREATE TABLE excursao (
  preco_total MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_total > '0.0'),  
  data_inicio DATE NOT NULL CHECK(data_inicio <= data_termino),  
  data_termino DATE NOT NULL,  
- categoria VARCHAR(50) NOT NULL,
  ID_atracao INT NOT NULL REFERENCES atracao(ID),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 ); 
 
@@ -121,7 +120,7 @@ CREATE TABLE tour_virtual (
  preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 ); 
 
@@ -136,7 +135,6 @@ CREATE TABLE eventos (
  ID SERIAL PRIMARY KEY, 
  faixa_etaria VARCHAR(50) NOT NULL CHECK (faixa_etaria IN ('Livre', '10+', '12+', '14+', '16+', '18+')),  
  descricao VARCHAR(200) NOT NULL,
- categoria VARCHAR(50) NOT NULL,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),  
  horario TIME NOT NULL,  
  data_inicio DATE NOT NULL,   
@@ -144,7 +142,7 @@ CREATE TABLE eventos (
  preco_pessoa MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_pessoa >= '0.0'),
  ID_atracao INT NOT NULL REFERENCES atracao(ID),   
  ID_tour_virtual INT NOT NULL REFERENCES tour_virtual(ID),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 ); 
 
@@ -154,7 +152,7 @@ CREATE TABLE admin (
  email VARCHAR(100) NOT NULL,
  senha VARCHAR(100) NOT NULL,
  url_imagem VARCHAR(200),
- data_criacao DATE NOT NULL,
+ data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 );
 
