@@ -33,6 +33,13 @@ ON classificacao
 FOR EACH ROW
 EXECUTE FUNCTION log_classificacao_func();
 
+CREATE TRIGGER trg_log_atracao
+AFTER INSERT OR UPDATE OR DELETE
+ON atracao
+FOR EACH ROW
+EXECUTE FUNCTION log_atracao_func();
+
+
 
 CREATE TRIGGER trg_log_ponto_turistico
 AFTER INSERT OR UPDATE OR DELETE

@@ -18,7 +18,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_plano_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_plano (plano_id, operacao, data_operacao)
+    INSERT INTO log_plano (id_plano, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
@@ -27,7 +27,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_tour_virtual_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_tour_virtual (tour_virtual_id, operacao, data_operacao)
+    INSERT INTO log_tour_virtual (id_tour_virtual, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
@@ -36,7 +36,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_eventos_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_eventos (evento_id, operacao, data_operacao)
+    INSERT INTO log_eventos (id_evento, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
@@ -45,7 +45,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_excursao_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_excursao (excursao_id, operacao, data_operacao)
+    INSERT INTO log_excursao (id_excursao, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
@@ -54,7 +54,16 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_classificacao_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_classificacao (classificacao_id, operacao, data_operacao)
+    INSERT INTO log_classificacao (id_classificacao, operacao, data_operacao)
+    VALUES (NEW.ID, TG_OP, NOW());
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION log_atracao()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO log_atracao (id_atracao, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
@@ -63,7 +72,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION log_ponto_turistico_func()
 RETURNS TRIGGER AS $$
 BEGIN
-    INSERT INTO log_ponto_turistico (ponto_turistico_id, operacao, data_operacao)
+    INSERT INTO log_ponto_turistico (id_pónto_turistico, operacao, data_operacao)
     VALUES (NEW.ID, TG_OP, NOW());
     RETURN NEW;
 END;
