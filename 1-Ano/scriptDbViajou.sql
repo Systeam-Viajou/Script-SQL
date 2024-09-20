@@ -6,7 +6,7 @@ CREATE TABLE perguntas (
 CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
- email VARCHAR(100) NOT NULL,  
+ email VARCHAR(100) NOT NULL,
  cpf VARCHAR(11) UNIQUE NOT NULL CHECK (cpf~'^[0-9]{11}$'),  
  data_nascimento DATE NOT NULL,
  imagem VARCHAR(250),  
@@ -17,7 +17,7 @@ CREATE TABLE usuario (
  bairro VARCHAR(30) NOT NULL,  
  CEP VARCHAR(9) NOT NULL,  
  cidade VARCHAR(50) NOT NULL,  
- logradouro VARCHAR(100) NOT NULL,   
+ logradouro VARCHAR(100) NOT NULL
 ); 
 
 CREATE TABLE pesquisa_perfil ( 
@@ -155,10 +155,3 @@ CREATE TABLE admin (
  data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE NOT NULL
 );
-
-
-
-
-
-
-

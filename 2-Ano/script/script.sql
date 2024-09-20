@@ -1,12 +1,3 @@
-CREATE TABLE plano (
-    ID SERIAL PRIMARY KEY,
-	nome VARCHAR(50),
-    descricao TEXT,
-    livre_propaganda BOOLEAN DEFAULT FALSE,
-    valor DECIMAL(10, 2),
-	duracao VARCHAR(10)
-);
-
 CREATE TABLE role (
     ID SERIAL PRIMARY KEY,
     nome VARCHAR(50) UNIQUE NOT NULL
@@ -27,14 +18,28 @@ CREATE TABLE usuario (
     FOREIGN KEY (ID_role) REFERENCES role(ID)
 );
 
+CREATE TABLE plano (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(50),
+    descricao TEXT,
+    livre_propaganda BOOLEAN DEFAULT FALSE,
+    valor DECIMAL(10, 2),
+    duracao VARCHAR(10)
+);
+
 CREATE TABLE plano_usuario (
     ID_plano INT NOT NULL,
     ID_usuario VARCHAR(255) NOT NULL,
     data_pagamento TIMESTAMP WITH TIME ZONE,
-	data_termino TIMESTAMP WITH TIME ZONE,
+    data_termino TIMESTAMP WITH TIME ZONE,
     PRIMARY KEY (ID_plano, ID_usuario),
     FOREIGN KEY (ID_plano) REFERENCES plano(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
+);
+
+CREATE TABLE categoria (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE atracao (
@@ -43,7 +48,9 @@ CREATE TABLE atracao (
     descricao TEXT,
     endereco VARCHAR(255),
     acessibilidade BOOLEAN DEFAULT FALSE,
-    media_classificacao DECIMAL(3, 2)
+    media_classificacao DECIMAL(3, 2),
+    ID_categoria INT,
+    CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID)
 );
 
 CREATE TABLE tour_virtual (
@@ -53,7 +60,7 @@ CREATE TABLE tour_virtual (
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
 );
 
-CREATE TABLE pagamento_tourvirtual (
+CREATE TABLE pagamento_tour_virtual (
     ID SERIAL PRIMARY KEY,
     ID_usuario VARCHAR(255) NOT NULL,
     ID_tourvirtual INT NOT NULL,
@@ -62,19 +69,25 @@ CREATE TABLE pagamento_tourvirtual (
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE usuario_figurinhas (
+CREATE TABLE usuario_figurinha (
     ID_usuario VARCHAR(255) NOT NULL,
     ID_figurinha INT NOT NULL, 
     PRIMARY KEY (ID_usuario, ID_figurinha),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE eventos (
+CREATE TABLE evento (
     ID SERIAL PRIMARY KEY,
     data_inicio TIMESTAMP WITH TIME ZONE,
     preco_pessoa DECIMAL(10, 2),
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
+);
+
+CREATE TABLE empresa (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(255),
+    site_empresa VARCHAR(255)
 );
 
 CREATE TABLE excursao (
@@ -87,7 +100,8 @@ CREATE TABLE excursao (
     data_inicio TIMESTAMP WITH TIME ZONE,
     data_termino TIMESTAMP WITH TIME ZONE,
     ID_atracao INT NOT NULL,
-    FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
+    FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
+    FOREIGN KEY (ID_empresa) REFERENCES empresa(ID)
 );
 
 CREATE TABLE ponto_turistico (
@@ -95,7 +109,6 @@ CREATE TABLE ponto_turistico (
     ID_atracao INT NOT NULL,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
 );
-
 
 CREATE TABLE classificacao (
     ID SERIAL PRIMARY KEY,
@@ -106,7 +119,7 @@ CREATE TABLE classificacao (
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE perguntas_perfil (
+CREATE TABLE pergunta_pesquisa (
     ID SERIAL PRIMARY KEY,
     pergunta VARCHAR(200) NOT NULL
 );
@@ -114,54 +127,59 @@ CREATE TABLE perguntas_perfil (
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
     UID_usuario VARCHAR(255) NOT NULL REFERENCES usuario(uid),
-    ID_perguntas_perfil INT NOT NULL REFERENCES perguntas_perfil(ID),
+    ID_perguntas_perfil INT NOT NULL REFERENCES pergunta_pesquisa(ID),
     resposta BOOLEAN NOT NULL,
     data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-
-
 --tabelas de log
 
 CREATE TABLE log_plano (
     log_id SERIAL PRIMARY KEY,
-    plano_id INT,
+    id_plano INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
-	--delete_old int
 );
 
 CREATE TABLE log_tour_virtual (
     log_id SERIAL PRIMARY KEY,
-    tour_virtual_id INT,
+    id_tour_virtual INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_eventos (
     log_id SERIAL PRIMARY KEY,
-    evento_id INT,
+    id_evento INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_excursao (
     log_id SERIAL PRIMARY KEY,
-    excursao_id INT,
+    id_excursao INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_classificacao (
     log_id SERIAL PRIMARY KEY,
-    classificacao_id INT,
+    id_classificacao INT,
+    operacao VARCHAR(10),
+    data_operacao TIMESTAMP WITH TIME ZONE
+);
+
+
+CREATE TABLE log_atracao (
+    log_id SERIAL PRIMARY KEY,
+    id_atracao INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE log_ponto_turistico (
     log_id SERIAL PRIMARY KEY,
-    ponto_turistico_id INT,
+    id_pónto_turistico INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
+
