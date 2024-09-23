@@ -24,7 +24,7 @@ CREATE TABLE plano (
     descricao TEXT,
     livre_propaganda BOOLEAN DEFAULT FALSE,
     valor DECIMAL(10, 2),
-    duracao VARCHAR(10)
+    duracao VARCHAR(20)
 );
 
 CREATE TABLE plano_usuario (
