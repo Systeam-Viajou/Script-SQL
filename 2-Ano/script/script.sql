@@ -22,7 +22,7 @@ CREATE TABLE usuario (
 CREATE TABLE plano (
     ID SERIAL PRIMARY KEY,
     nome VARCHAR(50),
-    descricao TEXT,
+    descricao VARCHAR(100),
     livre_propaganda BOOLEAN DEFAULT FALSE,
     valor DECIMAL(10, 2),
     duracao VARCHAR(20)
