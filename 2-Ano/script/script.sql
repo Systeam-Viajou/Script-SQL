@@ -7,6 +7,7 @@ CREATE TABLE usuario (
     uid VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) UNIQUE,
     -- email VARCHAR(255) UNIQUE NOT NULL,
     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
     nickname VARCHAR(30) UNIQUE NOT NULL,
@@ -94,12 +95,11 @@ CREATE TABLE excursao (
     ID SERIAL PRIMARY KEY,
     capacidade varchar(10),
     qntd_pessoas VARCHAR(10),
-    empresa VARCHAR(255),
-	site_empresa VARCHAR(255),
     preco_total DECIMAL(10, 2),
     data_inicio TIMESTAMP WITH TIME ZONE,
     data_termino TIMESTAMP WITH TIME ZONE,
     ID_atracao INT NOT NULL,
+    ID_empresa INT,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
     FOREIGN KEY (ID_empresa) REFERENCES empresa(ID)
 );
