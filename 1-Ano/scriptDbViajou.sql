@@ -41,7 +41,7 @@ CREATE TABLE plano (
  descricao VARCHAR(100) NOT NULL,  
  livre_propaganda BOOLEAN DEFAULT FALSE,  
  preco MONEY CONSTRAINT preco_negativo CHECK (preco >= '0.0'),
-  duracao VARCHAR(20) NOT NULL, 
+ duracao VARCHAR(20) NOT NULL, 
  data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE
 ); 
