@@ -59,7 +59,7 @@ CREATE TABLE atracao (
  nome VARCHAR(50) NOT NULL,  
  endereco VARCHAR(100) NOT NULL,  
  acessibilidade BOOLEAN DEFAULT FALSE,
- categoria VARCHAR(50) NOT NULL
+ categoria VARCHAR(50) NOT NULL,
  data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE
 ); 
