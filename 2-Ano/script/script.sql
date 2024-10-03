@@ -14,7 +14,7 @@ CREATE TABLE usuario (
     imagem VARCHAR(255),
     telefone VARCHAR(11) NOT NULL,
     genero CHAR(1),
-    senha VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL,
     ID_role INT,
     FOREIGN KEY (ID_role) REFERENCES role(ID)
 );
@@ -57,21 +57,21 @@ CREATE TABLE atracao (
     CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID)
 );
 
-CREATE TABLE tour_virtual (
-    ID SERIAL PRIMARY KEY,
-    ID_atracao INT NOT NULL,
-    preco DECIMAL(10, 2),
-    data_desativacao TIMESTAMP
-    FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
-);
+-- CREATE TABLE tour_virtual (
+--     ID SERIAL PRIMARY KEY,
+--     ID_atracao INT NOT NULL,
+--     preco DECIMAL(10, 2),
+--     data_desativacao TIMESTAMP
+--     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
+-- );
 
-CREATE TABLE pagamento_tour_virtual (
-    ID SERIAL PRIMARY KEY,
-    ID_usuario VARCHAR(255) NOT NULL,
-    ID_tourvirtual INT NOT NULL,
-    data_pagamento DATE,
-    FOREIGN KEY (ID_tourvirtual) REFERENCES tour_virtual(ID),
-    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
+CREATE TABLE pagamento_tour_virtual (  
+    ID SERIAL PRIMARY KEY,  
+    ID_usuario VARCHAR(255) NOT NULL,  
+    ID_tourvirtual INT NOT NULL,  
+    data_pagamento DATE,  -- Adicione a vírgula aqui  
+    FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)  
+    -- FOREIGN KEY (ID_tourvirtual) REFERENCES tour_virtual(ID)  
 );
 
 CREATE TABLE usuario_figurinha (
@@ -87,7 +87,7 @@ CREATE TABLE evento (
     data_termino TIMESTAMP WITH TIME ZONE,
     preco_pessoa DECIMAL(10, 2),
     ID_atracao INT NOT NULL,
-    data_desativacao TIMESTAMP
+    data_desativacao TIMESTAMP,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE excursao (
     data_termino TIMESTAMP WITH TIME ZONE,
     ID_atracao INT NOT NULL,
     ID_empresa INT,
-    data_desativacao TIMESTAMP
+    data_desativacao TIMESTAMP,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID),
     FOREIGN KEY (ID_empresa) REFERENCES empresa(ID)
 );
@@ -115,7 +115,7 @@ CREATE TABLE excursao (
 CREATE TABLE ponto_turistico (
     ID SERIAL PRIMARY KEY,
     ID_atracao INT NOT NULL,
-    data_desativacao TIMESTAMP
+    data_desativacao TIMESTAMP,
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
 );
 
@@ -131,7 +131,7 @@ CREATE TABLE classificacao (
 CREATE TABLE pergunta_pesquisa (
     ID SERIAL PRIMARY KEY,
     pergunta VARCHAR(200) NOT NULL,
-    data_inicio TIMESTAMP WITH TIME ZONE,
+    data_inicio TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE pesquisa_perfil (
