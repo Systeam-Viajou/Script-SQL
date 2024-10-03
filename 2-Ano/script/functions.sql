@@ -4,10 +4,13 @@ RETURNS TRIGGER AS $$
 DECLARE
     nova_media DECIMAL(3,2);
 BEGIN
+    -- Calcula a nova média das notas para a atração
     SELECT AVG(nota) INTO nova_media
     FROM classificacao
     WHERE ID_atracao = NEW.ID_atracao;
 
+    -- Atualiza a média de classificação na tabela 'atracao'
+    -- Se não houver avaliações, a média ficará como NULL
     UPDATE atracao
     SET media_classificacao = nova_media
     WHERE ID = NEW.ID_atracao;
@@ -15,6 +18,7 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
 -- Função de log para 'plano'
 CREATE OR REPLACE FUNCTION log_plano_func()
 RETURNS TRIGGER AS $$
