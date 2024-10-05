@@ -74,7 +74,8 @@ CREATE TABLE classificacao (
 CREATE TABLE imagem ( 
  ID SERIAL PRIMARY KEY,  
  url VARCHAR(200) NOT NULL,  
- ID_atracao INT NOT NULL REFERENCES atracao(ID)  
+ ID_atracao INT NOT NULL REFERENCES atracao(ID),
+ data_atualizacao DATE
 ); 
 
 CREATE TABLE pontos_turisticos (
