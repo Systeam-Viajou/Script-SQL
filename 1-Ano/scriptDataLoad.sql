@@ -449,7 +449,7 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('Museu histórico com exibições sobre a história local', 'Museu da Cidade', 'Praça da História, 8', FALSE, 'Exposições'),
 ('Área de lazer com playground e pistas de skate', 'Parque Radial', 'Rua dos Skates, 33', TRUE, 'Exposições'),
 ('Museu dedicado à ciência e tecnologia', 'Museu da Inovação', 'Av. das Descobertas, 60', TRUE, 'Exposições'),
-('Cinema com várias salas e programação variada', 'Cineplex', 'Rua do Cinema, 78', TRUE, 'Show', '2024-09-20'),
+('Cinema com várias salas e programação variada', 'Cineplex', 'Rua do Cinema, 78', TRUE, 'Show'),
 ('Área de conservação com trilhas ecológicas', 'Reserva Ecológica', 'Estrada Verde, 90', TRUE, 'Exposições'),
 ('Espaço cultural com shows ao vivo e eventos', 'Espaço Cultural', 'Rua dos Shows, 40', TRUE, 'Show'),
 ('Centro histórico com museus e atrações turísticas', 'Cidade Antiga', 'Praça dos Antigos, 5', FALSE, 'Exposições'),
