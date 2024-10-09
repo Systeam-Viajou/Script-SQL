@@ -57,21 +57,12 @@ CREATE TABLE atracao (
     CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID)
 );
 
--- CREATE TABLE tour_virtual (
---     ID SERIAL PRIMARY KEY,
---     ID_atracao INT NOT NULL,
---     preco DECIMAL(10, 2),
---     data_desativacao TIMESTAMP
---     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
--- );
-
 CREATE TABLE pagamento_tour_virtual (  
     ID SERIAL PRIMARY KEY,  
     ID_usuario VARCHAR(255) NOT NULL,  
     ID_tourvirtual INT NOT NULL,  
-    data_pagamento DATE,  -- Adicione a vírgula aqui  
+    data_pagamento DATE,
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)  
-    -- FOREIGN KEY (ID_tourvirtual) REFERENCES tour_virtual(ID)  
 );
 
 CREATE TABLE usuario_figurinha (
@@ -128,21 +119,18 @@ CREATE TABLE classificacao (
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE pergunta_pesquisa (
-    ID SERIAL PRIMARY KEY,
-    pergunta VARCHAR(200) NOT NULL,
-    data_inicio TIMESTAMP WITH TIME ZONE
-);
-
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
     UID_usuario VARCHAR(255) NOT NULL REFERENCES usuario(uid),
-    ID_perguntas_perfil INT NOT NULL REFERENCES pergunta_pesquisa(ID),
-    resposta BOOLEAN NOT NULL,
+    show BOOLEAN DEFAULT false,
+    festival BOOLEAN DEFAULT false,
+    exposicao BOOLEAN DEFAULT false,
+    feira BOOLEAN DEFAULT false,
+    apresentacao BOOLEAN DEFAULT false,
     data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
---tabelas de log
 
+--tabelas de log
 CREATE TABLE log_plano (
     log_id SERIAL PRIMARY KEY,
     id_plano INT,
