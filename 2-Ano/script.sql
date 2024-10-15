@@ -11,7 +11,6 @@ CREATE TABLE usuario (
     email VARCHAR(255) UNIQUE NOT NULL,
     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
     nickname VARCHAR(30) UNIQUE NOT NULL,
-    imagem VARCHAR(255),
     telefone VARCHAR(11) NOT NULL,
     genero CHAR(1),
     senha VARCHAR(255) NOT NULL,
