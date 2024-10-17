@@ -29,6 +29,7 @@ CREATE TABLE plano (
 );
 
 CREATE TABLE plano_usuario (
+    id SERIAL PRIMARY KEY,
     ID_plano INT NOT NULL,
     ID_usuario VARCHAR(255) NOT NULL,
     data_pagamento TIMESTAMP WITH TIME ZONE,
@@ -65,9 +66,9 @@ CREATE TABLE pagamento_tour_virtual (
 );
 
 CREATE TABLE usuario_figurinha (
+    ID SERIAL PRIMARY KEY,
     ID_usuario VARCHAR(255) NOT NULL,
     ID_figurinha INT NOT NULL, 
-    PRIMARY KEY (ID_usuario, ID_figurinha),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
