@@ -19,7 +19,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE plano (
-    id SERIAL PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     nome VARCHAR(50),
     descricao VARCHAR(100),
     livre_propaganda BOOLEAN DEFAULT FALSE,
@@ -29,12 +29,11 @@ CREATE TABLE plano (
 );
 
 CREATE TABLE plano_usuario (
-    id SERIAL PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     ID_plano INT NOT NULL,
     ID_usuario VARCHAR(255) NOT NULL,
     data_pagamento TIMESTAMP WITH TIME ZONE,
     data_termino TIMESTAMP WITH TIME ZONE,
-    PRIMARY KEY (ID_plano, ID_usuario),
     FOREIGN KEY (ID_plano) REFERENCES plano(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
