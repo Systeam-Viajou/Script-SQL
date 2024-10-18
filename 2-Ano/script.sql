@@ -44,6 +44,11 @@ CREATE TABLE categoria (
     data_desativacao TIMESTAMP
 );
 
+CREATE TABLE tipo (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE atracao (
     ID SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -52,8 +57,10 @@ CREATE TABLE atracao (
     acessibilidade BOOLEAN DEFAULT FALSE,
     media_classificacao DECIMAL(3, 2),
     ID_categoria INT,
+    ID_tipo INT,
     data_desativacao TIMESTAMP,
-    CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID)
+    CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID),
+    CONSTRAINT fk_tipo FOREIGN KEY (ID_tipo) REFERENCES tipo(ID)
 );
 
 CREATE TABLE pagamento_tour_virtual (  
