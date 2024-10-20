@@ -11,7 +11,6 @@ CREATE TABLE usuario (
     email VARCHAR(255) UNIQUE NOT NULL,
     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
     nickname VARCHAR(30) UNIQUE NOT NULL,
-    imagem VARCHAR(255),
     telefone VARCHAR(11) NOT NULL,
     genero CHAR(1),
     senha VARCHAR(255) NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE plano (
-    id SERIAL PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     nome VARCHAR(50),
     descricao VARCHAR(100),
     livre_propaganda BOOLEAN DEFAULT FALSE,
@@ -30,11 +29,11 @@ CREATE TABLE plano (
 );
 
 CREATE TABLE plano_usuario (
+    ID SERIAL PRIMARY KEY,
     ID_plano INT NOT NULL,
     ID_usuario VARCHAR(255) NOT NULL,
     data_pagamento TIMESTAMP WITH TIME ZONE,
     data_termino TIMESTAMP WITH TIME ZONE,
-    PRIMARY KEY (ID_plano, ID_usuario),
     FOREIGN KEY (ID_plano) REFERENCES plano(ID),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
@@ -45,6 +44,11 @@ CREATE TABLE categoria (
     data_desativacao TIMESTAMP
 );
 
+CREATE TABLE tipo (
+    ID SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE atracao (
     ID SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -53,31 +57,24 @@ CREATE TABLE atracao (
     acessibilidade BOOLEAN DEFAULT FALSE,
     media_classificacao DECIMAL(3, 2),
     ID_categoria INT,
+    ID_tipo INT,
     data_desativacao TIMESTAMP,
-    CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID)
+    CONSTRAINT fk_categoria FOREIGN KEY (ID_categoria) REFERENCES categoria(ID),
+    CONSTRAINT fk_tipo FOREIGN KEY (ID_tipo) REFERENCES tipo(ID)
 );
-
--- CREATE TABLE tour_virtual (
---     ID SERIAL PRIMARY KEY,
---     ID_atracao INT NOT NULL,
---     preco DECIMAL(10, 2),
---     data_desativacao TIMESTAMP
---     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
--- );
 
 CREATE TABLE pagamento_tour_virtual (  
     ID SERIAL PRIMARY KEY,  
     ID_usuario VARCHAR(255) NOT NULL,  
     ID_tourvirtual INT NOT NULL,  
-    data_pagamento DATE,  -- Adicione a vírgula aqui  
+    data_pagamento DATE,
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)  
-    -- FOREIGN KEY (ID_tourvirtual) REFERENCES tour_virtual(ID)  
 );
 
 CREATE TABLE usuario_figurinha (
+    ID SERIAL PRIMARY KEY,
     ID_usuario VARCHAR(255) NOT NULL,
     ID_figurinha INT NOT NULL, 
-    PRIMARY KEY (ID_usuario, ID_figurinha),
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
@@ -128,21 +125,18 @@ CREATE TABLE classificacao (
     FOREIGN KEY (ID_usuario) REFERENCES usuario(uid)
 );
 
-CREATE TABLE pergunta_pesquisa (
-    ID SERIAL PRIMARY KEY,
-    pergunta VARCHAR(200) NOT NULL,
-    data_inicio TIMESTAMP WITH TIME ZONE
-);
-
 CREATE TABLE pesquisa_perfil (
     ID SERIAL PRIMARY KEY,
     UID_usuario VARCHAR(255) NOT NULL REFERENCES usuario(uid),
-    ID_perguntas_perfil INT NOT NULL REFERENCES pergunta_pesquisa(ID),
-    resposta BOOLEAN NOT NULL,
+    show BOOLEAN DEFAULT false,
+    festival BOOLEAN DEFAULT false,
+    exposicao BOOLEAN DEFAULT false,
+    feira BOOLEAN DEFAULT false,
+    apresentacao BOOLEAN DEFAULT false,
     data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
---tabelas de log
 
+--tabelas de log
 CREATE TABLE log_plano (
     log_id SERIAL PRIMARY KEY,
     id_plano INT,
