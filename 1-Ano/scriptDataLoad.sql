@@ -490,49 +490,6 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('Centro de eventos com espaço para convenções e feiras', 'Centro de Feiras', 'Rua dos Eventos, 45', TRUE, 'Feiras'),
 ('Complexo de esportes com quadras de tênis e piscina olímpica', 'Complexo Aquático', 'Avenida dos Atletas, 150', TRUE, 'Apresentações'),
 -- 30 eventos
-
-('Espaço verde com área para meditação e relaxamento', 'Parque Zen', 'Rua dos Jardins, 60', TRUE, 'Exposições'),
-('Museu com exposições sobre evolução tecnológica', 'Museu da Tecnologia', 'Av. da Inovação, 140', TRUE, 'Exposições'),
-('Teatro com uma programação variada de musicais e peças', 'Teatro da Estrela', 'Rua das Artes, 100', TRUE, 'Show'),
-('Praia com infraestrutura para famílias e atividades recreativas', 'Praia do Recanto', 'Avenida das Ondas, 85', TRUE, 'Festival'),
-('Shopping com várias opções de lojas e entretenimento', 'Shopping Horizonte', 'Rua das Compras, 45', TRUE, 'Feiras'),
-('Reserva com trilhas para caminhadas e observação de vida selvagem', 'Reserva do Horizonte', 'Estrada do Verde, 120', TRUE, 'Exposições'),
-('Biblioteca com serviços de empréstimo e leitura comunitária', 'Biblioteca do Povo', 'Av. dos Leitores, 90', TRUE, 'Exposições'),
-('Galeria com exposições rotativas de artistas emergentes', 'Galeria do Novo', 'Rua dos Expositores, 32', TRUE, 'Exposições'),
-('Centro de convenções com salas para conferências e workshops', 'Centro de Negócios', 'Rua dos Profissionais, 20', TRUE, 'Feiras'),
-('Parque temático com atrações para todas as idades', 'Parque do Diversão', 'Av. da Aventura, 300', TRUE, 'Exposições'),
-('Área verde com pista de caminhada e ciclovia', 'Parque da Liberdade', 'Rua da Paz, 120', TRUE, 'Exposições'),
-('Museu dedicado à história militar e armas antigas', 'Museu Militar', 'Av. dos Soldados, 55', TRUE, 'Exposições'),
-('Espaço para eventos culturais e shows musicais', 'Espaço de Cultura', 'Rua dos Shows, 85', TRUE, 'Show'),
-('Praia com áreas para esportes de areia e quiosques', 'Praia do Paraíso', 'Avenida das Praias, 110', TRUE, 'Festival'),
-('Shopping com diversas opções gastronômicas e de lazer', 'Shopping Premium', 'Rua dos Shoppings, 22', TRUE, 'Feiras'),
-('Jardim botânico com coleções de plantas exóticas', 'Jardim Botânico Tropical', 'Rua das Plantas, 80', TRUE, 'Exposições'),
-('Biblioteca com área para pesquisa e estudo', 'Biblioteca Universitária', 'Av. das Letras, 160', TRUE, 'Exposições'),
-('Galeria de arte com foco em fotografia e arte digital', 'Galeria Fotográfica', 'Rua das Imagens, 27', TRUE, 'Exposições'),
-('Centro de convenções com auditórios e estandes para feiras', 'Centro de Exposições', 'Rua dos Eventos, 50', TRUE, 'Feiras'),
-('Parque aquático com toboáguas e áreas para crianças', 'Parque das Águas', 'Av. do Parque, 45', TRUE, 'Festival'),
-('Parque com áreas para esportes e piqueniques', 'Parque do Bosque', 'Rua do Bosque, 45', TRUE, 'Exposições'),
-('Museu com exposições sobre a história natural', 'Museu da Natureza', 'Av. das Ciências, 100', TRUE, 'Exposições'),
-('Teatro com programação variada de artes dramáticas', 'Teatro do Poeta', 'Rua dos Dramaturgos, 55', TRUE, 'Show'),
-('Praia com infraestrutura para esportes aquáticos e lazer', 'Praia das Estrelas', 'Avenida das Ondas, 75', TRUE, 'Festival'),
-('Shopping com diversas lojas e opções de entretenimento', 'Shopping Central', 'Rua das Compras, 60', TRUE, 'Feiras'),
-('Reserva natural com trilhas para observação de fauna e flora', 'Reserva Natural do Sul', 'Estrada do Sul, 90', TRUE, 'Exposições'),
-('Biblioteca com acervo digital e áreas de estudo silenciosas', 'Biblioteca Digital', 'Av. da Informação, 110', TRUE, 'Exposições'),
-('Galeria com exposições de arte contemporânea e moderna', 'Galeria Contemporânea', 'Rua das Artes, 35', TRUE, 'Exposições'),
-('Centro de eventos com salas para conferências e workshops', 'Centro de Eventos e Feiras', 'Rua das Feiras, 45', TRUE, 'Feiras'),
-('Parque temático com atrações para toda a família', 'Parque Diversão Total', 'Avenida das Diversões, 200', TRUE, 'Exposições'),
-('Área de lazer com pista de corrida e academia ao ar livre', 'Parque da Saúde', 'Rua da Corrida, 70', TRUE, 'Exposições'),
-('Museu com exposições sobre a evolução da arte', 'Museu da Arte Evolutiva', 'Av. da Cultura, 150', TRUE, 'Exposições'),
-('Centro cultural com exibições de filmes e workshops', 'Centro Cultural do Cinema', 'Rua dos Filmes, 95', TRUE, 'Show'),
-('Praia com infraestrutura para esportes e áreas para crianças', 'Praia do Horizonte', 'Avenida das Marés, 120', TRUE, 'Festival'),
-('Shopping com opções de entretenimento e atividades para crianças', 'Shopping Vista Alegre', 'Rua das Lojas, 80', TRUE, 'Feiras'),
-('Parque com jardins temáticos e trilhas para caminhadas', 'Jardins do Parque', 'Rua das Trilhas, 40', TRUE, 'Exposições'),
-('Biblioteca com recursos para estudo e leitura comunitária', 'Biblioteca do Conhecimento', 'Av. dos Estudos, 175', TRUE, 'Exposições'),
-('Galeria de arte com foco em exposições de arte digital', 'Galeria Digital', 'Rua das Tecnologias, 25', TRUE, 'Exposições'),
-('Centro de convenções com áreas para eventos corporativos e sociais', 'Centro Corporativo', 'Rua dos Negócios, 100', TRUE, 'Feiras'),
-('Complexo de lazer com parque aquático e áreas para festas', 'Lazer & Diversão', 'Avenida do Lazer, 300', TRUE, 'Festival');
--- 40 pontos_turisticos
-
 ('Deque de observação no 42º andar de um arranha-céu com chão e paredes de vidro e vista para a cidade.', 'Sampa Sky', 'Praça Pedro Lessa, 110 - Centro Histórico de São Paulo, São Paulo - SP, 01032-030', TRUE, 'Exposições'),
 ('Ponte Otávio Frias de Oliveira', 'Ponte Estaiada','Av. das Nações Unidas, 7108 - Vila Cordeiro, São Paulo - SP, 04583-105', TRUE, 'Exposições'),
 ('Viaduto de 225 metros de extensão, situado no centro de são Paulo, que liga o centro velho ao centro novo da cidade', 'Viaduto da Santa Ifigênia', 'Viaduto Santa Ifigênia, 62-200 - Santa Ifigênia, São Paulo - SP, 01031-001', TRUE, 'Exposições'),
@@ -563,7 +520,7 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('O Museu Brasileiro da Escultura e da Ecologia apresenta filmes de artes, cursos, palestras, recitais de piano, seminários, apresentações de música clássica, feiras de antiguidade, design, entre outras coisas', 'MuBE', 'R. Alemanha, 221 - Jardim Europa, São Paulo - SP, 01448-000', TRUE, 'Exposições'),
 ('O Centro Cultural Banco do Brasil (CCBB) oferece exposições itinerantes de grandes artistas mundiais e um circuito de teatro e música extremamente expressivo', 'Centro Cultural Banco do Brasil (CCBB)', 'R. Álvares Penteado, 112 - Centro Histórico de São Paulo, São Paulo - SP, 01012-000', TRUE, 'Exposições'),
 ('O MUB3 - Museu da Bolsa do Brasil tem o propósito de estabelecer uma nova relação das pessoas com o universo da educação financeira e o impacto em suas vidas', 'MUB3', 'R. Quinze de Novembro, 275 - Centro Histórico de São Paulo, São  Paulo - SP, 01013-906', TRUE, 'Exposições'),
--- 30, faltam 10 registros ainda
+-- 30 de pontos turisticos, faltam 10 registros ainda
 
 
 
