@@ -491,7 +491,7 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('Complexo de esportes com quadras de tênis e piscina olímpica', 'Complexo Aquático', 'Avenida dos Atletas, 150', TRUE, 'Apresentações'),
 -- 30 eventos
 ('Deque de observação no 42º andar de um arranha-céu com chão e paredes de vidro e vista para a cidade.', 'Sampa Sky', 'Praça Pedro Lessa, 110 - Centro Histórico de São Paulo, São Paulo - SP, 01032-030', TRUE, 'Exposições'),
-('Ponte Otávio Frias de Oliveira', 'Ponte Estaiada','Av. das Nações Unidas, 7108 - Vila Cordeiro, São Paulo - SP, 04583-105', TRUE, 'Exposições'),
+('Ponte Estaiada Octavio Frias de Oliveira', 'Ponte Estaiada','Av. das Nações Unidas, 7108 - Vila Cordeiro, São Paulo - SP, 04583-105', TRUE, 'Exposições'),
 ('Viaduto de 225 metros de extensão, situado no centro de são Paulo, que liga o centro velho ao centro novo da cidade', 'Viaduto da Santa Ifigênia', 'Viaduto Santa Ifigênia, 62-200 - Santa Ifigênia, São Paulo - SP, 01031-001', TRUE, 'Exposições'),
 ('Praça com o Marco Zero da capital paulista', 'Praça da Sé', 'Praça da Sé - Sé, São Paulo - SP, 01001-000', TRUE, 'Exposições'),
 ('Praça localizada no centro da cidade, também correcida por sua feira de Arte e Artesanato que abriga mais de 600 barracas', 'Praça da República', 'Praça da república - República, São Paulo - SP, 12020-363', TRUE, 'Exposições'),
