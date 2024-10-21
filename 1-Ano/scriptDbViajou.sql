@@ -55,7 +55,7 @@ CREATE TABLE usuario_plano (
 
 CREATE TABLE atracao (
  ID SERIAL PRIMARY KEY,  
- descricao VARCHAR(200) NOT NULL,  
+ descricao VARCHAR(500) NOT NULL,  
  nome VARCHAR(50) NOT NULL,  
  endereco VARCHAR(100) NOT NULL,  
  acessibilidade BOOLEAN DEFAULT FALSE,

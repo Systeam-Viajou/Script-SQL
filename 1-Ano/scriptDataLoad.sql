@@ -457,8 +457,6 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('Museu com exposições de arte clássica e moderna', 'Museu da Arte', 'Av. das Belas Artes, 90', TRUE, 'Exposições'),
 ('Biblioteca com uma vasta coleção de livros e áreas de estudo', 'Biblioteca do Saber', 'Av. dos Livros, 220', TRUE, 'Exposições'),
 ('Galeria com exposições de esculturas e arte interativa', 'Galeria Escultural', 'Rua das Esculturas, 70', TRUE, 'Exposições'),
--- 30 excursão
-
 ('Estádio de futebol com capacidade para 50 mil pessoas', 'Estádio Olímpico', 'Av. dos Esportes, 300', TRUE, 'Apresentações'),
 ('Centro de convenções com salas para eventos', 'Centro de Eventos', 'Rua dos Eventos, 50', TRUE, 'Feiras'),
 ('Praia com quiosques e atividades esportivas', 'Praia dos Ventos', 'Av. Atlântica, 150', TRUE, 'Festival'),
@@ -489,7 +487,6 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('Parque com áreas para churrasco e lagos para pesca', 'Parque do Lago', 'Estrada dos Lagos, 80', TRUE, 'Exposições'),
 ('Centro de eventos com espaço para convenções e feiras', 'Centro de Feiras', 'Rua dos Eventos, 45', TRUE, 'Feiras'),
 ('Complexo de esportes com quadras de tênis e piscina olímpica', 'Complexo Aquático', 'Avenida dos Atletas, 150', TRUE, 'Apresentações'),
--- 30 eventos
 ('Deque de observação no 42º andar de um arranha-céu com chão e paredes de vidro e vista para a cidade.', 'Sampa Sky', 'Praça Pedro Lessa, 110 - Centro Histórico de São Paulo, São Paulo - SP, 01032-030', TRUE, 'Exposições'),
 ('Ponte Estaiada Octavio Frias de Oliveira', 'Ponte Estaiada','Av. das Nações Unidas, 7108 - Vila Cordeiro, São Paulo - SP, 04583-105', TRUE, 'Exposições'),
 ('Viaduto de 225 metros de extensão, situado no centro de são Paulo, que liga o centro velho ao centro novo da cidade', 'Viaduto da Santa Ifigênia', 'Viaduto Santa Ifigênia, 62-200 - Santa Ifigênia, São Paulo - SP, 01031-001', TRUE, 'Exposições'),
@@ -520,7 +517,17 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('O Museu Brasileiro da Escultura e da Ecologia apresenta filmes de artes, cursos, palestras, recitais de piano, seminários, apresentações de música clássica, feiras de antiguidade, design, entre outras coisas', 'MuBE', 'R. Alemanha, 221 - Jardim Europa, São Paulo - SP, 01448-000', TRUE, 'Exposições'),
 ('O Centro Cultural Banco do Brasil (CCBB) oferece exposições itinerantes de grandes artistas mundiais e um circuito de teatro e música extremamente expressivo', 'Centro Cultural Banco do Brasil (CCBB)', 'R. Álvares Penteado, 112 - Centro Histórico de São Paulo, São Paulo - SP, 01012-000', TRUE, 'Exposições'),
 ('O MUB3 - Museu da Bolsa do Brasil tem o propósito de estabelecer uma nova relação das pessoas com o universo da educação financeira e o impacto em suas vidas', 'MUB3', 'R. Quinze de Novembro, 275 - Centro Histórico de São Paulo, São  Paulo - SP, 01013-906', TRUE, 'Exposições'),
--- 30 de pontos turisticos, faltam 10 registros ainda
+('O Museu de Arte Sacra é uma das principais instituições culturais brasileiras voltadas ao estudo, conservação, restauro e exposição de objetos às artes, com destaque ao segmento sacro e barroco', 'Museu de Arte Sacra', 'Av. Tiradentes, 676 - Luz, São Paulo - SP, 01102-000', TRUE, 'Exposições'),
+('O Museu Afro Brasil integra os anseios do negro jovem e pobre ao seu programa museológico, contribuindo para sua formação educacional e artística', 'Museu Afro Brasil', 'Portão 10, Av. Pedro Álvares Cabral, s/n Vila Mariana, São Paulo - Estado de São Paulo, 04094-050', TRUE, 'Exposições'),
+('Instituto Lina Bo Bardi/Casa de Vidro é uma organização da sociedade civil de fins não lucrativos com sede na cidade de São Paulo', 'Instituto Lina Bo Bardi - Casa de Vidro', 'R. Gen. Almério de Moura, 200 - Morumbi, São Paulo - SP, 05690-080', TRUE, 'Exposições'),
+('O instituto Tomie Ohtake é dedicado às artes visuais e seus cruzamentos com a educação, a arquitetura e o design, sempre aberto ao diálogo com outras linguagens e temas contemporâneos', 'Instituto Tomie Ohtake', 'Rua Coropé, 88 - Pinheiros, São Paulo - SP, 05426-010', TRUE, 'Exposições'),
+('O Museu de Arte Brasileira é atrelado ao programa de atividades da FAAP tais como Residência Artística, exposições e intercâmbios', 'Museu de Arte Brasileira', 'R. Alagoas, 903 - Higienópolis, São Paulo - SP, 01242-902', TRUE, 'Exposições'),
+('O bairro da Liberdade é conhecido como o maior reduto da comunidade japonesa no município', 'Bairro da Liberdade', 'Liberdade, São Paulo - SP', TRUE, 'Exposições'),
+('A Feira do Bixiga é uma feira de antiguidades, onde é possível ver tanto a boemia quanto os costumes religiosos do moradores', 'Feira do Bixiga', 'Praça Dom Orione - Bela Vista, São Paulo - SP, 01325-020', TRUE, 'Exposições'),
+('O Museu do Catavento é interativo, divertido e altamente informativo, o Catavento rende um dia inteiro de passeio e experiências que nos levam rumo ao mundo da ciência, tudo em meio a brincadeiras e muitas gargalhadas', 'Museu do Catavento', 'Avenida Mercúrio, Parque Dom Pedro II, s/n, São Paulo - SP, 03003-060', TRUE, 'Exposições'),
+('A Galeria do Rock têm 450 lojas de várias especialidades', 'Galeria do Rock', 'Av. São João, 439 - República, São Paulo - SP, 01035-000', TRUE, 'Exposições'),
+('O Museu da Língua Portuguesa aproxima os falantes do idioma em todo o mundo', 'Museu da Língua Portuguesa', 'Praça da Luz, s/n° - Centro Histórico de São Paulo, São Paulo - SP, 01120-010', TRUE, 'Exposições');
+
 
 
 
