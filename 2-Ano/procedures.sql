@@ -1,13 +1,19 @@
-CREATE OR REPLACE PROCEDURE cadastrar_evento(v_faixa_etaria VARCHAR, v_horario TIME, v_data_inicio DATE, v_data_termino DATE, v_preco_pessoa DECIMAL, v_id_atracao INT)
+CREATE OR REPLACE PROCEDURE calcular_idade(v_id_usuario VARCHAR)
 LANGUAGE plpgsql
 AS $$
+DECLARE
+    v_data_nascimento DATE;
+    v_idade INT;
 BEGIN
-    IF EXISTS (SELECT 1 FROM eventos WHERE ID_atracao = v_id_atracao AND NOT (data_termino < v_data_inicio OR data_inicio > v_data_termino)) THEN
-        RAISE EXCEPTION 'Atração já reservada para as datas escolhidas.';
-    ELSE
-        INSERT INTO eventos (faixa_etaria, horario, data_inicio, data_termino, preco_pessoa, ID_atracao)
-        VALUES (v_faixa_etaria, v_horario, v_data_inicio, v_data_termino, v_preco_pessoa, v_id_atracao);
-    END IF;
+    SELECT data_nascimento INTO v_data_nascimento
+    FROM usuario
+    WHERE uid = v_id_usuario;
+
+    v_idade := EXTRACT(YEAR FROM AGE(CURRENT_DATE, v_data_nascimento));
+
+    UPDATE usuario
+    SET idade = v_idade
+    WHERE uid = v_id_usuario;
 END;
 $$;
 
@@ -21,23 +27,5 @@ BEGIN
         INSERT INTO classificacao (nota, ID_usuario, ID_atracao)
         VALUES (v_nota, v_id_usuario, v_id_atracao);
     END IF;
-END;
-$$;
-
-
-CREATE OR REPLACE PROCEDURE registrar_pagamento_tourvirtual(v_id_usuario INT, v_id_tourvirtual INT, v_data_pagamento DATE)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    INSERT INTO pagamento_tourvirtual (ID_usuario, ID_tourvirtual, data_pagamento)
-    VALUES (v_id_usuario, v_id_tourvirtual, v_data_pagamento);
-END;
-$$;
-
-CREATE OR REPLACE PROCEDURE remover_usuario(v_id INT)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    DELETE FROM usuario WHERE ID = v_id;
 END;
 $$;
