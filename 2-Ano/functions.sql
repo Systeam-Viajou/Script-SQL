@@ -19,6 +19,30 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION mostrar_eventos_recentes()
+RETURNS TABLE (
+    ID INT,
+    data_inicio TIMESTAMP WITH TIME ZONE,
+    data_termino TIMESTAMP WITH TIME ZONE,
+    preco_pessoa DECIMAL(10, 2),
+    ID_atracao INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.ID,
+        e.data_inicio,
+        e.data_termino,
+        e.preco_pessoa,
+        e.ID_atracao
+    FROM
+        evento e
+    WHERE
+        e.data_termino > NOW()  -- Apenas eventos que ainda não terminaram
+        AND e.data_desativacao IS NULL;  -- Filtra eventos que não foram desativados
+END;
+$$ LANGUAGE plpgsql;
+
 -- Função de log para 'plano'
 CREATE OR REPLACE FUNCTION log_plano_func()
 RETURNS TRIGGER AS $$
