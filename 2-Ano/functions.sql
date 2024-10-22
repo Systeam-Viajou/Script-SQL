@@ -19,6 +19,40 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION mostrar_excursao_atuais()
+RETURNS TABLE (
+    ID INT,
+    capacidade VARCHAR(10),
+    qntd_pessoas VARCHAR(10),
+    preco_total DECIMAL(10, 2),
+    data_inicio TIMESTAMP WITH TIME ZONE,
+    data_termino TIMESTAMP WITH TIME ZONE,
+    nome_atracao VARCHAR(100),
+    nome_empresa VARCHAR(255)
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        e.ID,
+        e.capacidade,
+        e.qntd_pessoas,
+        e.preco_total,
+        e.data_inicio,
+        e.data_termino,
+        a.nome AS nome_atracao,
+        emp.nome AS nome_empresa
+    FROM
+        excursao e
+    JOIN
+        atracao a ON e.ID_atracao = a.ID
+    LEFT JOIN
+        empresa emp ON e.ID_empresa = emp.ID
+    WHERE
+        e.data_termino > NOW()  -- Excursões que ainda não terminaram
+        AND e.data_desativacao IS NULL;  -- Excursões que não foram desativadas
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION mostrar_eventos_recentes()
 RETURNS TABLE (
     ID INT,
