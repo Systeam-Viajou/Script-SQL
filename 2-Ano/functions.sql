@@ -1,4 +1,3 @@
--- Função de log para media_classificacao de
 CREATE OR REPLACE FUNCTION atualizar_media_classificacao()
 RETURNS TRIGGER AS $$
 DECLARE
