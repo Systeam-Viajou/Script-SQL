@@ -18,7 +18,42 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION mostrar_excursao_atuais()
+--Retorna as atrações recomendadas com base nas categorias preferidas do usuário:
+CREATE OR REPLACE FUNCTION recomendar_atracoes(usuario_uid VARCHAR)
+RETURNS TABLE (
+    ID SERIAL,
+    nome VARCHAR,
+    descricao TEXT,
+    endereco VARCHAR,
+    acessibilidade BOOLEAN,
+    media_classificacao DECIMAL(3, 2),
+    ID_categoria INT,
+    ID_tipo INT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT a.ID, a.nome, a.descricao, a.endereco, a.acessibilidade, 
+           a.media_classificacao, a.ID_categoria, a.ID_tipo
+    FROM atracao a
+    JOIN categoria c ON a.ID_categoria = c.ID
+    JOIN pesquisa_perfil pp ON pp.UID_usuario = usuario_uid
+    WHERE pp.festival = TRUE AND a.ID_categoria IN (
+        SELECT c.ID FROM categoria c WHERE c.nome = 'Festival'
+    )
+    OR pp.exposicao = TRUE AND a.ID_categoria IN (
+        SELECT c.ID FROM categoria c WHERE c.nome = 'Exposição'
+    )
+    OR pp.feira = TRUE AND a.ID_categoria IN (
+        SELECT c.ID FROM categoria c WHERE c.nome = 'Feira'
+    )
+    OR pp.apresentacao = TRUE AND a.ID_categoria IN (
+        SELECT c.ID FROM categoria c WHERE c.nome = 'Apresentação'
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+--Retorna excursões que não terminaram ainda, com base na data atual
+CREATE OR REPLACE FUNCTION mostrar_excursoes_recentes()
 RETURNS TABLE (
     ID INT,
     capacidade VARCHAR(10),
@@ -52,6 +87,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Retorna eventos que não terminaram ainda, com base na data atual
 CREATE OR REPLACE FUNCTION mostrar_eventos_recentes()
 RETURNS TABLE (
     ID INT,
