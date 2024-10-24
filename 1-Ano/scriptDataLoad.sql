@@ -528,15 +528,6 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('A Galeria do Rock têm 450 lojas de várias especialidades', 'Galeria do Rock', 'Av. São João, 439 - República, São Paulo - SP, 01035-000', TRUE, 'Exposições'),
 ('O Museu da Língua Portuguesa aproxima os falantes do idioma em todo o mundo', 'Museu da Língua Portuguesa', 'Praça da Luz, s/n° - Centro Histórico de São Paulo, São Paulo - SP, 01120-010', TRUE, 'Exposições');
 
-
-
-
-
-
-
-
-
-
 -- Inserção na tabela classificacao
 INSERT INTO classificacao(nota, ID_atracao, ID_usuario) VALUES
 (4.5, 1, 11),
@@ -791,36 +782,36 @@ INSERT INTO pontos_turisticos (capacidade, preco_entrada, ID_atracao) VALUES
 
 -- Inserção na tabela excursao
 INSERT INTO excursao (nome_empresa, capacidade, duracao, site, preco_total, data_inicio, data_termino, ID_atracao) VALUES
-('Aventura Extrema', 40, '3 dias', 'www.aventuraextrema.com', 250.00, '2024-07-01', '2024-07-03', 1),
-('Explora Tours', 35, '5 dias', 'www.exploratours.com', 400.00, '2024-06-15', '2024-06-20', 2),
-('Turismo Tropical', 50, '7 dias', 'www.turismotropical.com', 750.00, '2024-08-01', '2024-08-08', 3),
-('Natureza Selvagem', 30, '4 dias', 'www.naturezaselvagem.com', 320.00, '2024-07-10', '2024-07-14', 4),
-('Ilhas & Cia', 25, '2 dias', 'www.ilhasecia.com', 150.00, '2024-07-05', '2024-07-07', 5),
-('Montanha Azul', 45, '6 dias', 'www.montanhaazul.com', 550.00, '2024-07-20', '2024-07-26', 6),
-('Trilhas do Horizonte', 20, '3 dias', 'www.trilhasdohorizonte.com', 270.00, '2024-06-25', '2024-06-28', 7),
-('Ocean Explorer', 40, '5 dias', 'www.oceanexplorer.com', 620.00, '2024-08-10', '2024-08-15', 8),
-('Viajar Sempre', 50, '8 dias', 'www.viajardepois.com', 800.00, '2024-07-12', '2024-07-20', 9),
-('Caminhos da Natureza', 30, '4 dias', 'www.caminhosdanatureza.com', 300.00, '2024-07-05', '2024-07-09', 10),
-('Aventura e Mar', 35, '5 dias', 'www.aventuraemar.com', 450.00, '2024-06-22', '2024-06-27', 11),
-('Rota das Cachoeiras', 40, '3 dias', 'www.rotacachoeiras.com', 260.00, '2024-06-28', '2024-06-30', 12),
-('Pé na Estrada', 50, '6 dias', 'www.penaestrada.com', 500.00, '2024-07-18', '2024-07-24', 13),
-('Expedição Litorânea', 20, '4 dias', 'www.expedicaolitoranea.com', 350.00, '2024-07-01', '2024-07-05', 14),
-('Horizonte Aberto', 45, '7 dias', 'www.horizonteaberto.com', 780.00, '2024-07-10', '2024-07-17', 15),
-('Ecoturismo Brasil', 30, '5 dias', 'www.ecoturismobrasil.com', 400.00, '2024-06-30', '2024-07-05', 16),
-('Ilhas Paradisíacas', 25, '3 dias', 'www.ilhasparadisiacas.com', 220.00, '2024-07-03', '2024-07-06', 17),
-('Montanhas e Rios', 40, '6 dias', 'www.montanhaseerios.com', 580.00, '2024-06-25', '2024-07-01', 18),
-('Trilhas do Sul', 35, '4 dias', 'www.trilhasdosul.com', 320.00, '2024-07-05', '2024-07-09', 19),
-('Oceanos e Mares', 50, '8 dias', 'www.oceanosemares.com', 850.00, '2024-08-05', '2024-08-13', 20),
-('Aventura Real', 45, '5 dias', 'www.aventurareal.com', 460.00, '2024-07-10', '2024-07-15', 21),
-('Caminhos da Floresta', 30, '6 dias', 'www.caminhosdafloresta.com', 520.00, '2024-07-20', '2024-07-26', 22),
-('Ilhas e Praias', 35, '7 dias', 'www.ilhasepraias.com', 700.00, '2024-08-01', '2024-08-08', 23),
-('Montanhas e Aventura', 20, '3 dias', 'www.montanhaseaventura.com', 280.00, '2024-07-12', '2024-07-15', 24),
-('Ecoturismo Total', 40, '5 dias', 'www.ecoturismototal.com', 450.00, '2024-07-08', '2024-07-13', 25),
-('Viajar Mais', 50, '8 dias', 'www.viajarmuito.com', 900.00, '2024-07-14', '2024-07-22', 26),
-('Aventura Atlântica', 30, '4 dias', 'www.aventuraatlantica.com', 300.00, '2024-06-25', '2024-06-29', 27),
-('Explorando o Norte', 25, '7 dias', 'www.explorandonorte.com', 800.00, '2024-07-05', '2024-07-12', 28),
-('Natureza em Foco', 35, '5 dias', 'www.naturezaemfoco.com', 400.00, '2024-07-10', '2024-07-15', 29),
-('Caminhos do Interior', 40, '6 dias', 'www.caminhosdointerior.com', 550.00, '2024-07-02', '2024-07-08', 30);
+('Aventura Extrema', 40, '3 dias', 'www.aventuraextrema.com', 250.00, '2024-11-01', '2024-11-04', 1),
+('Explora Tours', 35, '5 dias', 'www.exploratours.com', 400.00, '2024-11-02', '2024-11-07', 2),
+('Turismo Tropical', 50, '7 dias', 'www.turismotropical.com', 750.00, '2024-11-01', '2024-11-08', 3),
+('Natureza Selvagem', 30, '4 dias', 'www.naturezaselvagem.com', 320.00, '2024-11-06', '2024-11-10', 4),
+('Ilhas & Cia', 25, '2 dias', 'www.ilhasecia.com', 150.00, '2024-11-05', '2024-11-07', 5),
+('Montanha Azul', 45, '6 dias', 'www.montanhaazul.com', 550.00, '2024-11-03', '2024-11-09', 6),
+('Trilhas do Horizonte', 20, '3 dias', 'www.trilhasdohorizonte.com', 270.00, '2024-11-08', '2024-11-11', 7),
+('Ocean Explorer', 40, '5 dias', 'www.oceanexplorer.com', 620.00, '2024-11-04', '2024-11-09', 8),
+('Viajar Sempre', 50, '8 dias', 'www.viajardepois.com', 800.00, '2024-11-01', '2024-11-09', 9),
+('Caminhos da Natureza', 30, '4 dias', 'www.caminhosdanatureza.com', 300.00, '2024-11-06', '2024-11-10', 10),
+('Aventura e Mar', 35, '5 dias', 'www.aventuraemar.com', 450.00, '2024-11-10', '2024-11-15', 11),
+('Rota das Cachoeiras', 40, '3 dias', 'www.rotacachoeiras.com', 260.00, '2024-11-11', '2024-11-14', 12),
+('Pé na Estrada', 50, '6 dias', 'www.penaestrada.com', 500.00, '2024-11-07', '2024-07-13', 13),
+('Expedição Litorânea', 20, '4 dias', 'www.expedicaolitoranea.com', 350.00, '2024-11-10', '2024-11-14', 14),
+('Horizonte Aberto', 45, '7 dias', 'www.horizonteaberto.com', 780.00, '2024-11-06', '2024-11-13', 15),
+('Ecoturismo Brasil', 30, '5 dias', 'www.ecoturismobrasil.com', 400.00, '2024-11-11', '2024-11-16', 16),
+('Ilhas Paradisíacas', 25, '3 dias', 'www.ilhasparadisiacas.com', 220.00, '2024-11-10', '2024-11-13', 17),
+('Montanhas e Rios', 40, '6 dias', 'www.montanhaseerios.com', 580.00, '2024-11-08', '2024-11-14', 18),
+('Trilhas do Sul', 35, '4 dias', 'www.trilhasdosul.com', 320.00, '2024-11-09', '2024-11-13', 19),
+('Oceanos e Mares', 50, '8 dias', 'www.oceanosemares.com', 850.00, '2024-11-10', '2024-11-18', 20),
+('Aventura Real', 45, '5 dias', 'www.aventurareal.com', 460.00, '2024-11-14', '2024-11-19', 21),
+('Caminhos da Floresta', 30, '6 dias', 'www.caminhosdafloresta.com', 520.00, '2024-11-15', '2024-11-21', 22),
+('Ilhas e Praias', 35, '7 dias', 'www.ilhasepraias.com', 700.00, '2024-11-12', '2024-11-19', 23),
+('Montanhas e Aventura', 20, '3 dias', 'www.montanhaseaventura.com', 280.00, '2024-11-15', '2024-11-18', 24),
+('Ecoturismo Total', 40, '5 dias', 'www.ecoturismototal.com', 450.00, '2024-11-14', '2024-11-19', 25),
+('Viajar Mais', 50, '8 dias', 'www.viajarmuito.com', 900.00, '2024-11-18', '2024-11-26', 26),
+('Aventura Atlântica', 30, '4 dias', 'www.aventuraatlantica.com', 300.00, '2024-11-20', '2024-11-24', 27),
+('Explorando o Norte', 25, '7 dias', 'www.explorandonorte.com', 800.00, '2024-11-13', '2024-11-20', 28),
+('Natureza em Foco', 35, '5 dias', 'www.naturezaemfoco.com', 400.00, '2024-11-15', '2024-11-20', 29),
+('Caminhos do Interior', 40, '6 dias', 'www.caminhosdointerior.com', 550.00, '2024-11-14', '2024-11-20', 30);
 
 -- Inserção na tabela figurinhas
 INSERT INTO figurinhas(url) VALUES
@@ -1176,39 +1167,38 @@ INSERT INTO pagamento_tour(data_pagamento, ID_tour_virtual, ID_usuario) VALUES
 ('2024-04-08', 29, 99),
 ('2024-04-09', 30, 100);
 
-
 -- Inserção na tabela eventos
 INSERT INTO eventos(faixa_etaria, descricao, capacidade, horario, data_inicio, data_termino, preco_pessoa, ID_atracao, ID_tour_virtual) VALUES
-('10+', 'Atividade para crianças', 50000, '15:00', '2024-10-01', '2024-10-15', 55.00, 31, 31),
-('12+', 'Festa de Halloween', 120, '16:00', '2024-10-02', '2024-10-16', 65.00, 32, 32),
-('14+', 'Show de talentos', 1500, '17:00', '2024-10-03', '2024-10-17', 75.00, 33, 33),
-('16+', 'Concerto de música clássica', 180, '18:00', '2024-10-04', '2024-10-18', 85.00, 34, 34),
-('18+', 'Noite de ópera', 200, '19:00', '2024-10-05', '2024-10-19', 95.00, 35, 35),
-('Livre', 'Maratona de filmes', 250, '20:00', '2024-10-06', '2024-10-20', 50.00, 36, 36),
-('10+', 'Festival de inverno', 130, '21:00', '2024-10-07', '2024-10-21', 60.00, 37, 37),
-('12+', 'Peça de teatro infantil', 140, '22:00', '2024-10-08', '2024-10-22', 70.00, 38, 38),
-('14+', 'Gala de dança contemporânea', 160, '23:00', '2024-10-09', '2024-10-23', 80.00, 39, 39),
-('16+', 'Espetáculo de mágica', 190, '00:00', '2024-10-10', '2024-10-24', 90.00, 40, 40),
-('12+', 'Evento cultural', 110, '16:00', '2024-10-11', '2024-10-25', 60.00, 41, 41),
-('14+', 'Feira de artesanato', 140, '17:00', '2024-10-12', '2024-10-26', 70.00, 42, 42),
-('16+', 'Festival de dança', 180, '18:00', '2024-10-13', '2024-10-27', 80.00, 43, 43),
-('18+', 'Concerto ao vivo', 200, '19:00', '2024-10-14', '2024-10-28', 90.00, 44, 44),
-('Livre', 'Noite de jazz', 200, '20:00', '2024-10-15', '2024-10-29', 50.00, 45, 45),
-('10+', 'Festival de primavera', 100, '15:00', '2024-10-15', '2024-10-29', 55.00, 46, 46),
-('12+', 'Feira de ciências', 120, '16:00', '2024-10-16', '2024-10-30', 65.00, 47, 47),
-('14+', 'Show de talentos juvenil', 150, '17:00', '2024-10-17', '2024-10-31', 75.00, 48, 48),
-('16+', 'Concerto de música moderna', 180, '18:00', '2024-10-18', '2024-11-01', 85.00, 49, 49),
-('18+', 'Ópera ao ar livre', 200, '19:00', '2024-10-19', '2024-11-02', 95.00, 50, 50),
-('Livre', 'Noite de filmes clássicos', 250, '20:00', '2024-10-20', '2024-11-03', 50.00, 51, 51),
-('10+', 'Festival de teatro infantil', 130, '21:00', '2024-10-21', '2024-11-04', 60.00, 52, 52),
-('12+', 'Peça de teatro escolar', 140, '22:00', '2024-10-22', '2024-11-05', 70.00, 53, 53),
-('14+', 'Dança contemporânea', 160, '23:00', '2024-10-23', '2024-11-06', 80.00, 54, 54),
-('16+', 'Festival de cinema', 190, '00:00', '2024-10-24', '2024-11-07', 90.00, 55, 55),
-('18+', 'Show de mágica ao vivo', 110, '16:00', '2024-10-25', '2024-11-08', 60.00, 56, 56),
-('10+', 'Evento de artesanato infantil', 100, '15:00', '2024-10-26', '2024-11-09', 55.00, 57, 57),
-('12+', 'Festival de livros', 120, '16:00', '2024-10-27', '2024-11-10', 65.00, 58, 58),
-('14+', 'Feira de arte', 150, '17:00', '2024-10-28', '2024-11-11', 75.00, 59, 59),
-('16+', 'Concerto de piano', 180, '18:00', '2024-10-29', '2024-11-12', 85.00, 60, 60);
+('10+', 'Atividade para crianças', 50000, '15:00', '2024-11-01', '2024-11-11', 55.00, 31, 31),
+('12+', 'Festa de Halloween', 120, '16:00', '2024-11-02', '2024-11-10', 65.00, 32, 32),
+('14+', 'Show de talentos', 1500, '17:00', '2024-11-03', '2024-11-05', 75.00, 33, 33),
+('16+', 'Concerto de música clássica', 180, '18:00', '2024-11-02', '2024-11-10', 85.00, 34, 34),
+('18+', 'Noite de ópera', 200, '19:00', '2024-11-01', '2024-11-07', 95.00, 35, 35),
+('Livre', 'Maratona de filmes', 250, '20:00', '2024-11-07', '2024-11-11', 50.00, 36, 36),
+('10+', 'Festival de inverno', 130, '21:00', '2024-11-01', '2024-10-07', 60.00, 37, 37),
+('12+', 'Peça de teatro infantil', 140, '22:00', '2024-11-02', '2024-11-12', 70.00, 38, 38),
+('14+', 'Gala de dança contemporânea', 160, '23:00', '2024-11-04', '2024-11-12', 80.00, 39, 39),
+('16+', 'Espetáculo de mágica', 190, '00:00', '2024-11-09', '2024-11-12', 90.00, 40, 40),
+('12+', 'Evento cultural', 110, '16:00', '2024-11-05', '2024-11-15', 60.00, 41, 41),
+('14+', 'Feira de artesanato', 140, '17:00', '2024-11-12', '2024-11-20', 70.00, 42, 42),
+('16+', 'Festival de dança', 180, '18:00', '2024-11-10', '2024-11-19', 80.00, 43, 43),
+('18+', 'Concerto ao vivo', 200, '19:00', '2024-11-09', '2024-11-17', 90.00, 44, 44),
+('Livre', 'Noite de jazz', 200, '20:00', '2024-11-02', '2024-11-15', 50.00, 45, 45),
+('10+', 'Festival de primavera', 100, '15:00', '2024-11-11', '2024-11-28', 55.00, 46, 46),
+('12+', 'Feira de ciências', 120, '16:00', '2024-11-11', '2024-11-19', 65.00, 47, 47),
+('14+', 'Show de talentos juvenil', 150, '17:00', '2024-11-12', '2024-11-30', 75.00, 48, 48),
+('16+', 'Concerto de música moderna', 180, '18:00', '2024-11-10', '2024-11-27', 85.00, 49, 49),
+('18+', 'Ópera ao ar livre', 200, '19:00', '2024-11-06', '2024-11-13', 95.00, 50, 50),
+('Livre', 'Noite de filmes clássicos', 250, '20:00', '2024-11-20', '2024-11-30', 50.00, 51, 51),
+('10+', 'Festival de teatro infantil', 130, '21:00', '2024-11-21', '2024-11-29', 60.00, 52, 52),
+('12+', 'Peça de teatro escolar', 140, '22:00', '2024-11-13', '2024-11-24', 70.00, 53, 53),
+('14+', 'Dança contemporânea', 160, '23:00', '2024-11-20', '2024-11-30', 80.00, 54, 54),
+('16+', 'Festival de cinema', 190, '00:00', '2024-11-13', '2024-11-17', 90.00, 55, 55),
+('18+', 'Show de mágica ao vivo', 110, '16:00', '2024-11-21', '2024-11-27', 60.00, 56, 56),
+('10+', 'Evento de artesanato infantil', 100, '15:00', '2024-11-16', '2024-11-30', 55.00, 57, 57),
+('12+', 'Festival de livros', 120, '16:00', '2024-11-17', '2024-11-23', 65.00, 58, 58),
+('14+', 'Feira de arte', 150, '17:00', '2024-11-12', '2024-11-29', 75.00, 59, 59),
+('16+', 'Concerto de piano', 180, '18:00', '2024-10-18', '2024-11-21', 85.00, 60, 60);
 
 -- Inserção na tabela admin
 INSERT INTO Admin (nome, email, senha, url_imagem) VALUES 
