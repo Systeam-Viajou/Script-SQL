@@ -17,7 +17,7 @@ BEGIN
 END;
 $$;
 
-CREATE OR REPLACE PROCEDURE avaliar_atracao(v_nota FLOAT, v_id_usuario INT, v_id_atracao INT)
+CREATE OR REPLACE PROCEDURE avaliar_atracao(v_nota FLOAT, v_uid_usuario VARCHAR, v_id_atracao INT)
 LANGUAGE plpgsql
 AS $$
 BEGIN
@@ -27,7 +27,7 @@ BEGIN
     ELSE
         -- Inserir a classificação
         INSERT INTO classificacao (nota, ID_usuario, ID_atracao)
-        VALUES (v_nota, v_id_usuario, v_id_atracao);
+        VALUES (v_nota, v_uid_usuario, v_id_atracao);
     END IF;
 END;
 $$;
