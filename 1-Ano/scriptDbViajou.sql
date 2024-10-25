@@ -1,8 +1,10 @@
+-- Tabela Perguntas
 CREATE TABLE perguntas (  
  ID SERIAL PRIMARY KEY,  
  nome VARCHAR(100) NOT NULL
 ); 
 
+-- tabela Usuario
 CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
@@ -20,6 +22,7 @@ CREATE TABLE usuario (
  logradouro VARCHAR(100) NOT NULL
 ); 
 
+-- Tabela pesquisa_perfil
 CREATE TABLE pesquisa_perfil ( 
  ID SERIAL PRIMARY KEY,  
  respostas VARCHAR(200) NOT NULL,  
@@ -29,12 +32,14 @@ CREATE TABLE pesquisa_perfil (
  ID_usuario INT NOT NULL REFERENCES usuario(ID)
 );
 
+-- Telefone
 CREATE TABLE telefone (
  ID SERIAL PRIMARY KEY,
  telefone VARCHAR(20) NOT NULL,  
  ID_usuario INT NOT NULL REFERENCES usuario(ID) 
 ); 
 
+-- Plano
 CREATE TABLE plano ( 
  ID SERIAL PRIMARY KEY, 
  nome VARCHAR(100) NOT NULL,  
@@ -46,6 +51,7 @@ CREATE TABLE plano (
  data_atualizacao DATE
 ); 
 
+-- Usuario_plano
 CREATE TABLE usuario_plano ( 
  ID SERIAL PRIMARY KEY,  
  data_pagamento DATE NOT NULL,  
@@ -53,6 +59,7 @@ CREATE TABLE usuario_plano (
  ID_plano INT NOT NULL REFERENCES plano(ID)  
 ); 
 
+-- Atracao
 CREATE TABLE atracao (
  ID SERIAL PRIMARY KEY,  
  descricao VARCHAR(500) NOT NULL,  
@@ -64,6 +71,7 @@ CREATE TABLE atracao (
  data_atualizacao DATE
 ); 
 
+-- Classificacao
 CREATE TABLE classificacao ( 
  ID SERIAL PRIMARY KEY,  
  nota FLOAT NOT NULL CONSTRAINT nota_negativa CHECK(nota BETWEEN 1 AND 5),  
@@ -71,6 +79,7 @@ CREATE TABLE classificacao (
  ID_usuario INT NOT NULL REFERENCES usuario(ID)  
 ); 
 
+-- Imagem
 CREATE TABLE imagem ( 
  ID SERIAL PRIMARY KEY,  
  url VARCHAR(200) NOT NULL,  
@@ -78,6 +87,7 @@ CREATE TABLE imagem (
  data_atualizacao DATE
 ); 
 
+-- Pontos_turisticos
 CREATE TABLE pontos_turisticos (
  ID SERIAL PRIMARY KEY,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),
@@ -87,6 +97,7 @@ CREATE TABLE pontos_turisticos (
  data_atualizacao DATE
 );
 
+-- Excursao
 CREATE TABLE excursao ( 
  ID SERIAL PRIMARY KEY,  
  nome_empresa VARCHAR(100) NOT NULL,
@@ -101,17 +112,20 @@ CREATE TABLE excursao (
  data_atualizacao DATE
 ); 
 
+-- Figurinhas
 CREATE TABLE figurinhas ( 
  ID SERIAL PRIMARY KEY,  
  url VARCHAR(200) NOT NULL  
 );
 
+-- Figu_usuario
 CREATE TABLE figu_usuario ( 
  ID SERIAL PRIMARY KEY,  
  ID_usuario INT NOT NULL REFERENCES usuario(ID),  
  ID_figurinhas INT NOT NULL REFERENCES figurinhas(ID)  
 );
 
+-- Tour_virtual
 CREATE TABLE tour_virtual (
  ID SERIAL PRIMARY KEY,  
  descricao VARCHAR(200) NOT NULL,  
@@ -125,6 +139,7 @@ CREATE TABLE tour_virtual (
  data_atualizacao DATE 
 ); 
 
+-- Pagamento_tour
 CREATE TABLE pagamento_tour (
  ID SERIAL PRIMARY KEY,
  data_pagamento DATE NOT NULl,
@@ -132,6 +147,7 @@ CREATE TABLE pagamento_tour (
  ID_usuario INT NOT NULL REFERENCES usuario(ID)
  );
 
+-- Eventos
 CREATE TABLE eventos ( 
  ID SERIAL PRIMARY KEY, 
  faixa_etaria VARCHAR(50) NOT NULL CHECK (faixa_etaria IN ('Livre', '10+', '12+', '14+', '16+', '18+')),  
@@ -147,6 +163,7 @@ CREATE TABLE eventos (
  data_atualizacao DATE
 ); 
 
+-- Admin
 CREATE TABLE admin (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,
