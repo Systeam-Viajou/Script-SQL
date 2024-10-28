@@ -1,22 +1,3 @@
-CREATE OR REPLACE PROCEDURE calcular_idade(v_id_usuario VARCHAR)
-LANGUAGE plpgsql
-AS $$
-DECLARE
-    v_data_nascimento DATE;
-    v_idade INT;
-BEGIN
-    SELECT data_nascimento INTO v_data_nascimento
-    FROM usuario
-    WHERE uid = v_id_usuario;
-
-    v_idade := EXTRACT(YEAR FROM AGE(CURRENT_DATE, v_data_nascimento));
-
-    UPDATE usuario
-    SET idade = v_idade
-    WHERE uid = v_id_usuario;
-END;
-$$;
-
 CREATE OR REPLACE PROCEDURE avaliar_atracao(v_nota FLOAT, v_uid_usuario VARCHAR, v_id_atracao INT)
 LANGUAGE plpgsql
 AS $$
