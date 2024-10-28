@@ -182,7 +182,7 @@ CREATE TABLE log_atracao (
 
 CREATE TABLE log_ponto_turistico (
     log_id SERIAL PRIMARY KEY,
-    id_pónto_turistico INT,
+    id_ponto_turistico INT,
     operacao VARCHAR(10),
     data_operacao TIMESTAMP WITH TIME ZONE
 );
