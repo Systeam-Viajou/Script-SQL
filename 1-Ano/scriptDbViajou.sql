@@ -11,7 +11,7 @@ CREATE TABLE usuario (
  email VARCHAR(100) NOT NULL,
  cpf VARCHAR(11) UNIQUE NOT NULL CHECK (cpf~'^[0-9]{11}$'),  
  data_nascimento DATE NOT NULL,
- imagem VARCHAR(250),  
+ imagem VARCHAR(1000),  
  nickname VARCHAR(20),  
  genero CHAR CHECK (genero in ('M', 'F', 'O')),  
  senha VARCHAR(100) NOT NULL,  
@@ -82,7 +82,7 @@ CREATE TABLE classificacao (
 -- Imagem
 CREATE TABLE imagem ( 
  ID SERIAL PRIMARY KEY,  
- url VARCHAR(200) NOT NULL,  
+ url VARCHAR(1000) NOT NULL,  
  ID_atracao INT NOT NULL REFERENCES atracao(ID),
  data_atualizacao DATE
 ); 
@@ -103,7 +103,7 @@ CREATE TABLE excursao (
  nome_empresa VARCHAR(100) NOT NULL,
  capacidade INT NOT NULL CONSTRAINT capacidade_negativa CHECK (capacidade > 0),  
  duracao VARCHAR(20) NOT NULL,  
- site VARCHAR(200) NOT NULL,  
+ site VARCHAR(500) NOT NULL,  
  preco_total MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco_total > '0.0'),  
  data_inicio DATE NOT NULL CHECK(data_inicio <= data_termino),  
  data_termino DATE NOT NULL,  
@@ -115,7 +115,7 @@ CREATE TABLE excursao (
 -- Figurinhas
 CREATE TABLE figurinhas ( 
  ID SERIAL PRIMARY KEY,  
- url VARCHAR(200) NOT NULL  
+ url VARCHAR(1000) NOT NULL  
 );
 
 -- Figu_usuario
@@ -129,7 +129,7 @@ CREATE TABLE figu_usuario (
 CREATE TABLE tour_virtual (
  ID SERIAL PRIMARY KEY,  
  descricao VARCHAR(200) NOT NULL,  
- video VARCHAR(200) NOT NULL, 
+ video VARCHAR(1000) NOT NULL, 
  media_classificacao FLOAT NOT NULL DEFAULT 0,  
  qnt_classificacao INT NOT NULL DEFAULT 0,
  preco MONEY NOT NULL CONSTRAINT preco_negativo CHECK (preco > '0.0'),
