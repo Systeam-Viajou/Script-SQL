@@ -1,10 +1,10 @@
--- Tabela Perguntas
+-- Perguntas
 CREATE TABLE perguntas (  
  ID SERIAL PRIMARY KEY,  
  nome VARCHAR(100) NOT NULL
 ); 
 
--- tabela Usuario
+-- Usuario
 CREATE TABLE usuario (
  ID SERIAL PRIMARY KEY,
  nome VARCHAR(100) NOT NULL,  
@@ -62,8 +62,8 @@ CREATE TABLE usuario_plano (
 -- Atracao
 CREATE TABLE atracao (
  ID SERIAL PRIMARY KEY,  
- descricao VARCHAR(500) NOT NULL,  
- nome VARCHAR(50) NOT NULL,  
+ nome VARCHAR(50) NOT NULL,
+ descricao VARCHAR(500) NOT NULL,
  endereco VARCHAR(100) NOT NULL,  
  acessibilidade BOOLEAN DEFAULT FALSE,
  categoria VARCHAR(50) NOT NULL,
@@ -169,7 +169,7 @@ CREATE TABLE admin (
  nome VARCHAR(100) NOT NULL,
  email VARCHAR(100) NOT NULL,
  senha VARCHAR(100) NOT NULL,
- url_imagem VARCHAR(200),
+ url_imagem VARCHAR(1000),
  data_criacao DATE NOT NULL DEFAULT CURRENT_DATE,
  data_atualizacao DATE
 );
