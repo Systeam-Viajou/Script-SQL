@@ -7,7 +7,7 @@ CREATE TABLE usuario (
     uid VARCHAR(255) PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     sobrenome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(11) UNIQUE,
+    cpf VARCHAR(11),
     email VARCHAR(255) UNIQUE NOT NULL,
     data_nascimento DATE CHECK (data_nascimento < CURRENT_DATE),
     nickname VARCHAR(30) UNIQUE NOT NULL,
