@@ -524,7 +524,7 @@ INSERT INTO atracao(descricao, nome, endereco, acessibilidade, categoria) VALUES
 ('O Museu de Arte Brasileira é atrelado ao programa de atividades da FAAP tais como Residência Artística, exposições e intercâmbios', 'Museu de Arte Brasileira', 'R. Alagoas, 903 - Higienópolis, São Paulo - SP, 01242-902', TRUE, 'Exposições'),
 ('O bairro da Liberdade é conhecido como o maior reduto da comunidade japonesa no município', 'Bairro da Liberdade', 'Liberdade, São Paulo - SP', TRUE, 'Exposições'),
 ('A Feira do Bixiga é uma feira de antiguidades, onde é possível ver tanto a boemia quanto os costumes religiosos do moradores', 'Feira do Bixiga', 'Praça Dom Orione - Bela Vista, São Paulo - SP, 01325-020', TRUE, 'Exposições'),
-('O Museu do Catavento é interativo, divertido e altamente informativo, o Catavento rende um dia inteiro de passeio e experiências que nos levam rumo ao mundo da ciência, tudo em meio a brincadeiras e muitas gargalhadas', 'Museu do Catavento', 'Avenida Mercúrio, Parque Dom Pedro II, s/n, São Paulo - SP, 03003-060', TRUE, 'Exposições'),
+('O Museu Catavento é interativo, divertido e altamente informativo, o Catavento rende um dia inteiro de passeio e experiências que nos levam rumo ao mundo da ciência, tudo em meio a brincadeiras e muitas gargalhadas', 'Museu Catavento', 'Avenida Mercúrio, Parque Dom Pedro II, s/n, São Paulo - SP, 03003-060', TRUE, 'Exposições'),
 ('A Galeria do Rock têm 450 lojas de várias especialidades', 'Galeria do Rock', 'Av. São João, 439 - República, São Paulo - SP, 01035-000', TRUE, 'Exposições'),
 ('O Museu da Língua Portuguesa aproxima os falantes do idioma em todo o mundo', 'Museu da Língua Portuguesa', 'Praça da Luz, s/n° - Centro Histórico de São Paulo, São Paulo - SP, 01120-010', TRUE, 'Exposições');
 
@@ -1201,5 +1201,5 @@ INSERT INTO eventos(faixa_etaria, descricao, capacidade, horario, data_inicio, d
 ('16+', 'Concerto de piano', 180, '18:00', '2024-10-18', '2024-11-21', 85.00, 60, 60);
 
 -- Inserção na tabela admin
-INSERT INTO Admin (nome, email, senha, url_imagem) VALUES 
+INSERT INTO admin (nome, email, senha, url_imagem) VALUES 
 ('sofia', 'sofia.santana@germinare.org.br','syst1303', 'remix-efa71d19-84c9-4314-a3fb-a18035c64a66.png');
