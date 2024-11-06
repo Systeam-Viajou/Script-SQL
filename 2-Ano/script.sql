@@ -85,6 +85,7 @@ CREATE TABLE evento (
     preco_pessoa DECIMAL(10, 2),
     ID_atracao INT NOT NULL,
     data_desativacao TIMESTAMP,
+    url VARCHAR(255),
     FOREIGN KEY (ID_atracao) REFERENCES atracao(ID)
 );
 
